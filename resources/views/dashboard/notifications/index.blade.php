@@ -23,7 +23,12 @@
     <!-- Main content -->
     <section class="content">
 
+<<<<<<< HEAD
       <!-- Default box -->
+=======
+      <!-- Default box - -->
+
+>>>>>>> 0d48119458807c0a12d819a3c32aad9a1619d016
       <div class="row">
         <div class="col-md-12">
           <form action="">
