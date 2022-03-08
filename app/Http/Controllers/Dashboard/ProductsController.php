@@ -322,9 +322,11 @@ class ProductsController extends Controller
 
                 if (array_key_exists($product_stock->id, $request->image)) {
 
-                    Image::make($request->image[$product_stock->id][0])->resize(300, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    })->save(public_path('storage/images/products/' . $request->image[$product_stock->id][0]->hashName()), 60);
+                    // ->resize(300, null, function ($constraint) {
+                    //     $constraint->aspectRatio();
+                    // })
+
+                    Image::make($request->image[$product_stock->id][0])->save(public_path('storage/images/products/' . $request->image[$product_stock->id][0]->hashName()), 60);
 
                     $product_stock->update([
                         'image' => $request->image[$product_stock->id][0]->hashName(),
@@ -453,12 +455,13 @@ class ProductsController extends Controller
             }
 
 
+            // ->resize(300, null, function ($constraint) {
+            //     $constraint->aspectRatio();
+            // })
 
             foreach ($files as $file) {
 
-                Image::make($file)->resize(300, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save(public_path('storage/images/products/' . $file->hashName()), 60);
+                Image::make($file)->save(public_path('storage/images/products/' . $file->hashName()), 80);
 
                 ProductImage::create([
 
