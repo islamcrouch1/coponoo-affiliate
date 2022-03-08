@@ -353,9 +353,11 @@ class ProductImport implements
 
                     $rand = rand();
 
-                    Image::make($contents)->resize(300, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    })->save(public_path('storage/images/products/' . $rand  . ' - ' . $row['sku'] . $name), 90);
+                    // resize(300, null, function ($constraint) {
+                    //     $constraint->aspectRatio();
+                    // })->
+
+                    Image::make($contents)->save(public_path('storage/images/products/' . $rand  . ' - ' . $row['sku'] . $name), 80);
 
                     ProductImage::create([
 

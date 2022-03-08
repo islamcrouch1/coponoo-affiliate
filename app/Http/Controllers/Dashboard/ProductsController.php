@@ -224,9 +224,12 @@ class ProductsController extends Controller
         if ($files = $request->file('images')) {
             foreach ($files as $file) {
 
-                Image::make($file)->resize(300, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save(public_path('storage/images/products/' . $file->hashName()), 60);
+
+                // resize(300, null, function ($constraint) {
+                //     $constraint->aspectRatio();
+                // })->
+
+                Image::make($file)->save(public_path('storage/images/products/' . $file->hashName()), 80);
 
                 ProductImage::create([
                     'product_id' => $Product->id,
