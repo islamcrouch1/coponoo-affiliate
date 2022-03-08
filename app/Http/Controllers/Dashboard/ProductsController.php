@@ -455,9 +455,6 @@ class ProductsController extends Controller
             }
 
 
-            // ->resize(300, null, function ($constraint) {
-            //     $constraint->aspectRatio();
-            // })
 
             foreach ($files as $file) {
 
