@@ -404,6 +404,13 @@
         .card-header{
             background-color: #008cff !important;
         }
+        .table td {
+            padding:0!important;
+            width: 30px;
+        }
+        .btn-group-sm>.btn, .btn-sm{
+            width: 30px !important;
+        }
 
     </style>
 
