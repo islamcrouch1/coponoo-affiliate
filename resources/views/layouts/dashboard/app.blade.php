@@ -408,9 +408,10 @@
             padding:0!important;
             width: 30px;
         }
-        .btn-group-sm>.btn, .btn-sm{
+        .btnn{
             width: 30px !important;
         }
+
 
     </style>
 
