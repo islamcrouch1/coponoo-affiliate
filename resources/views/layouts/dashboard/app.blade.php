@@ -401,6 +401,9 @@
         .slider.round:before {
             border-radius: 50%;
         }
+        .card-header{
+            background-color: #008cff !important;
+        }
 
     </style>
 
