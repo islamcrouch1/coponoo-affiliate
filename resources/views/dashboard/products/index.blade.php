@@ -273,16 +273,27 @@
                                         <td style="padding-bottom: 34px ;"><input class="form-check-input" type="checkbox"
                                                 value="{{ $product->id }}" class="cb-element" name="checkAll[]"
                                                 style="margin-right: 11px;
-                                                                    margin-left: 11px;"></td>
+                                                                                margin-left: 11px;"></td>
                                         <td>{{ $product->id }}</td>
                                         <td>{{ $product->SKU }}</td>
                                         <td><img alt="Avatar" class="table-avatar"
                                                 src="{{ asset('storage/images/products/' . $url) }}"></td>
                                         @if (app()->getLocale() == 'ar')
-                                            <td><small>{{ $product->name_ar }}</small></td>
+                                            <td><small>{{ $product->name_ar }}
+                                                    @if ($product->categories()->count() > 1)
+                                                        <span
+                                                            class="badge badge-secondary">{{ __('multiple categories') }}</span>
+                                                    @endif
+                                                </small></td>
                                         @else
-                                            <td><small>{{ $product->name_en }}</small></td>
+                                            <td><small>{{ $product->name_en }}
+                                                    @if ($product->categories()->count() > 1)
+                                                        <span
+                                                            class="badge badge-secondary">{{ __('multiple categories') }}</span>
+                                                    @endif
+                                                </small></td>
                                         @endif
+
                                         <td>
                                             <a class="btn btn-primary btn-sm"
                                                 href="{{ route('users.show', [app()->getLocale(), $product->user->id]) }}">
