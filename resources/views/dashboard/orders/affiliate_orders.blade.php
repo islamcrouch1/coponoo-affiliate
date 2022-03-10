@@ -247,6 +247,7 @@
                                                 <a style="color:#ffffff" class="btn btn-primary btn-sm"
                                                     href="{{ route('orders.order.show', ['lang' => app()->getLocale(), 'order' => $order->id]) }}">
                                                     {{ __('Order Display') }}
+                                                    
                                                 </a>
 
                                                 @if ($order->status == 'pending')

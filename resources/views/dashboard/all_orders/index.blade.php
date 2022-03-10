@@ -379,32 +379,31 @@
 
 
 
-                                                    <a class="btn btn-info btn-sm"
+                                                    <a  class="btn btn-info btn-sm order-i" data-toggle="tooltip" data-placement="top" title=" {{ __('Affiliate Info') }}"
                                                         href="{{ route('users.show', [app()->getLocale(), $order->user->id]) }}">
-                                                        {{ __('Affiliate Info') }}
-                                                    </a>
+                                                        <i class=" fas fa-solid fa-user"></i>                                                    </a>
 
 
-                                                    <a style="color:#ffffff" class="btn btn-primary btn-sm"
+                                                    <a style="color:#ffffff" class="btn btn-primary btn-sm order-i"data-toggle="tooltip" data-placement="top" title="  {{ __('Order Display') }}"
                                                         href="{{ route('orders.order.show', ['lang' => app()->getLocale(), 'order' => $order->id]) }}">
-                                                        {{ __('Order Display') }}
+                                                        <i class="fas fa-solid fa-tv"></i>
+
                                                     </a>
 
 
 
                                                     @if ($order->status != 'canceled' && $order->status != 'returned')
-                                                        <button type="button" class="btn btn-primary btn-sm"
+                                                        <button type="button" class="btn btn-primary btn-sm order-i" data-toggle="tooltip" data-placement="top" title=" {{ __('Change Request Status') }}"
                                                             data-toggle="modal"
                                                             data-target="#modal-primary-{{ $order->id }}">
-                                                            {{ __('Change Request Status') }}
-                                                        </button>
-                                                    @endif
+                                                            <i class=" fas fa-solid fa-circle"></i>                                                    @endif
 
                                                     @if (auth()->user()->hasPermission('onotes-read'))
-                                                        <button type="button" class="btn btn-primary btn-sm"
+                                                        <button type="button" class="btn btn-primary btn-sm order-i" data-toggle="tooltip" data-placement="top" title="  {{ __('Notes') }}"
+                                                        data-toggle="modal"
                                                             data-toggle="modal"
                                                             data-target="#modal-danger-{{ $order->id }}">
-                                                            {{ __('Notes') }}
+                                                            <i class=" fas fa-solid fa-highlighter"></i>
                                                         </button>
                                                     @endif
 

@@ -411,6 +411,15 @@
         .btnn{
             width: 30px !important;
         }
+        .card-header>.card-tools ::after{
+            margin-top: 0px!important;
+            padding: 0px !important;
+        }
+        .order-i{
+            width:40px;
+        
+            margin: 3px;
+        }
 
 
     </style>
