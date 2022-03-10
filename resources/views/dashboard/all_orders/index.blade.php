@@ -261,7 +261,8 @@
                                             @foreach ($orders as $order)
                                                 <td style="padding-bottom: 34px ;"><input class="form-check-input"
                                                         type="checkbox" value="{{ $order->id }}" class="cb-element"
-                                                        name="checkAll[]"></td>
+                                                        name="checkAll[]" style="margin-right: 11px;
+                                                                                        margin-left: 11px"></td>
 
                                                 <td>{{ $order->id }}</td>
 
@@ -279,7 +280,8 @@
                                                         @break
 
                                                         @case('confirmed')
-                                                            <span class="badge badge-primary badge-lg">{{ __('confirmed') }}</span>
+                                                            <span
+                                                                class="badge badge-primary badge-lg">{{ __('confirmed') }}</span>
                                                         @break
 
                                                         @case('on the way')
@@ -287,7 +289,8 @@
                                                         @break
 
                                                         @case('delivered')
-                                                            <span class="badge badge-success badge-lg">{{ __('delivered') }}</span>
+                                                            <span
+                                                                class="badge badge-success badge-lg">{{ __('delivered') }}</span>
                                                         @break
 
                                                         @case('canceled')
@@ -379,12 +382,15 @@
 
 
 
-                                                    <a  class="btn btn-info btn-sm order-i" data-toggle="tooltip" data-placement="top" title=" {{ __('Affiliate Info') }}"
+                                                    <a class="btn btn-info btn-sm order-i" data-toggle="tooltip"
+                                                        data-placement="top" title=" {{ __('Affiliate Info') }}"
                                                         href="{{ route('users.show', [app()->getLocale(), $order->user->id]) }}">
-                                                        <i class=" fas fa-solid fa-user"></i>                                                    </a>
+                                                        <i class=" fas fa-solid fa-user"></i> </a>
 
 
-                                                    <a style="color:#ffffff" class="btn btn-primary btn-sm order-i"data-toggle="tooltip" data-placement="top" title="  {{ __('Order Display') }}"
+                                                    <a style="color:#ffffff" class="btn btn-secondary btn-sm order-i"
+                                                        data-toggle="tooltip" data-placement="top"
+                                                        title="  {{ __('Order Display') }}"
                                                         href="{{ route('orders.order.show', ['lang' => app()->getLocale(), 'order' => $order->id]) }}">
                                                         <i class="fas fa-solid fa-tv"></i>
 
@@ -393,16 +399,21 @@
 
 
                                                     @if ($order->status != 'canceled' && $order->status != 'returned')
-                                                        <button type="button" class="btn btn-primary btn-sm order-i" data-toggle="tooltip" data-placement="top" title=" {{ __('Change Request Status') }}"
+                                                        <button type="button" class="btn btn-primary btn-sm order-i"
                                                             data-toggle="modal"
-                                                            data-target="#modal-primary-{{ $order->id }}">
-                                                            <i class=" fas fa-solid fa-circle"></i>                                                    @endif
+                                                            data-target="#modal-primary-{{ $order->id }}"
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title=" {{ __('Change Request Status') }}">
+                                                            <i style="color:#ffffff"
+                                                                class=" fas fa-solid fa-calendar-check"></i>
+                                                    @endif
 
                                                     @if (auth()->user()->hasPermission('onotes-read'))
-                                                        <button type="button" class="btn btn-primary btn-sm order-i" data-toggle="tooltip" data-placement="top" title="  {{ __('Notes') }}"
-                                                        data-toggle="modal"
-                                                            data-toggle="modal"
-                                                            data-target="#modal-danger-{{ $order->id }}">
+                                                        <button style="margin-right: 6px" type="button"
+                                                            class="btn btn-success btn-sm order-i" data-toggle="modal"
+                                                            data-target="#modal-danger-{{ $order->id }}"
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="  {{ __('Notes') }}" data-toggle="modal">
                                                             <i class=" fas fa-solid fa-highlighter"></i>
                                                         </button>
                                                     @endif
@@ -530,7 +541,8 @@
                         enctype="multipart/form-data">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">{{ __('Order Notes') . ' #' . $order->id }}
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                {{ __('Order Notes') . ' #' . $order->id }}
                             </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -637,7 +649,8 @@
                                             {{ __('pending') }}</option>
                                         <option value="confirmed" {{ $order->status == 'confirmed' ? 'selected' : '' }}>
                                             {{ __('confirmed') }}</option>
-                                        <option value="on the way" {{ $order->status == 'on the way' ? 'selected' : '' }}>
+                                        <option value="on the way"
+                                            {{ $order->status == 'on the way' ? 'selected' : '' }}>
                                             {{ __('on the way') }}</option>
                                         <option value="in the mandatory period"
                                             {{ $order->status == 'in the mandatory period' ? 'selected' : '' }}>

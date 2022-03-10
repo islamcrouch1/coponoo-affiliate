@@ -273,7 +273,7 @@
                                         <td style="padding-bottom: 34px ;"><input class="form-check-input" type="checkbox"
                                                 value="{{ $product->id }}" class="cb-element" name="checkAll[]"
                                                 style="margin-right: 11px;
-                                                                                margin-left: 11px;"></td>
+                                                                                    margin-left: 11px;"></td>
                                         <td>{{ $product->id }}</td>
                                         <td>{{ $product->SKU }}</td>
                                         <td><img alt="Avatar" class="table-avatar"
