@@ -271,7 +271,9 @@
                                         @endif
 
                                         <td style="padding-bottom: 34px ;"><input class="form-check-input" type="checkbox"
-                                                value="{{ $product->id }}" class="cb-element" name="checkAll[]"></td>
+                                                value="{{ $product->id }}" class="cb-element" name="checkAll[]"
+                                                style="margin-right: 11px;
+                                                                    margin-left: 11px;"></td>
                                         <td>{{ $product->id }}</td>
                                         <td>{{ $product->SKU }}</td>
                                         <td><img alt="Avatar" class="table-avatar"
@@ -335,11 +337,12 @@
                            {{__('Vendor Info')}}
                         </a> --}}
 
-                                            <a class="btn btn-primary btn-sm btnn" data-toggle="tooltip" data-placement="top" title=" {{__('Show Product')}} "
+                                            <a class="btn btn-primary btn-sm btnn" data-toggle="tooltip"
+                                                data-placement="top" title=" {{ __('Show Product') }} "
                                                 href="{{ route('products.show', [app()->getLocale(), $product->id]) }}">
                                                 <i class="fas fa-eye">
                                                 </i>
-                                                
+
                                             </a>
 
                                             @if ($product->vendor_id == null)
@@ -349,33 +352,39 @@
                                                     {{ __('Not reviewed') }}
                                                 </a>
                                             @else
-                                                <a class="btn btn-secondary btn-sm btnn" data-toggle="tooltip" data-placement="top" title=" {{__('Admin Info')}}"
+                                                <a class="btn btn-secondary btn-sm btnn" data-toggle="tooltip"
+                                                    data-placement="top" title=" {{ __('Admin Info') }}"
                                                     href="{{ route('users.show', [app()->getLocale(), $product->vendor_id]) }}">
-                                                    <i class=" fas fa-solid fa-user"></i>                                                   
+                                                    <i class=" fas fa-solid fa-user"></i>
                                                 </a>
                                             @endif
 
                                             @if (!$product->trashed())
                                                 @if (auth()->user()->hasPermission('products-update'))
-                                                    <a class="btn btn-info btn-sm btnn" data-toggle="tooltip" data-placement="top" title=" {{__('Edit')}}"
+                                                    <a class="btn btn-info btn-sm btnn" data-toggle="tooltip"
+                                                        data-placement="top" title="{{ __('Edit') }}"
                                                         href="{{ route('products.edit', ['lang' => app()->getLocale(), 'product' => $product->id]) }}">
                                                         <i class="fas fa-pencil-alt">
                                                         </i>
                                                     </a>
 
-                                                    <a class="btn btn-info btn-sm" "btnn" data-toggle="tooltip" data-placement="top" title=" {{__('Add color')}}"
+                                                    <a class="btn btn-info btn-sm btnn" data-toggle="tooltip"
+                                                        data-placement="top" title="{{ __('Add color') }}"
                                                         href="{{ route('products.color', ['lang' => app()->getLocale(), 'product' => $product->id]) }}">
-                                                        <i class="fas fa-solid fa-brush"></i>                                                       
+                                                        <i class="fas fa-solid fa-brush"></i>
                                                     </a>
-                                                    
 
 
 
-                                                    <button type="button" class="btn btn-primary btn-sm btnn" data-toggle="tooltip" data-placement="top" title=" {{__('Change Product Status')}}" data-toggle="modal" data-target="#modal-primary-{{$product->id}}">
-                                                        <i class="fas fa-pencil-alt">
+
+                                                    <button type="button" class="btn btn-primary btn-sm btnn"
+                                                        data-toggle="modal"
+                                                        data-target="#modal-primary-{{ $product->id }}"
+                                                        data-toggle="tooltip" data-placement="top"
+                                                        title=" {{ __('Change Product Status') }}">
+                                                        <i class="fas fa-calendar-check">
                                                         </i>
                                                     </button>
-                            
                                                 @else
                                                     <a class="btn btn-info btn-sm" href="#" aria-disabled="true">
                                                         <i class="fas fa-pencil-alt">
@@ -409,11 +418,11 @@
                                             @if (auth()->user()->hasPermission('products-delete') |
     auth()->user()->hasPermission('products-trash'))
                                                 <a href="{{ route('products.destroy.new', ['lang' => app()->getLocale(), 'product' => $product->id]) }}"
-                                                    class="btn btn-danger btn-sm delete"data-toggle="tooltip" data-placement="top" title=" {{__('Delete')}}">
+                                                    class="btn btn-danger btn-sm delete" data-toggle="tooltip"
+                                                    data-placement="top" title=" {{ __('Delete') }}">
                                                     <i class="fas fa-trash">
                                                     </i>
                                                     @if ($product->trashed())
-                                                       
                                                     @else
                                                     @endif
                                                 </a>

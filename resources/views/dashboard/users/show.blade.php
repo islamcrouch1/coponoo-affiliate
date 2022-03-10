@@ -116,7 +116,8 @@
                             </div>
 
                             <h3 class="profile-username text-center">
-                                <span>{{ '#' . $user->id . ' : ' }}</span>{{ $user->name }}</h3>
+                                <span>{{ '#' . $user->id . ' : ' }}</span>{{ $user->name }}
+                            </h3>
 
                             <p class="text-muted text-center">
                                 {{ $user->hasRole('affiliate') ? __('Affiliate') : __('Vendor') }}</p>
@@ -178,7 +179,22 @@
                                                                 <img src="{{ asset('storage/images/users/' . $note->profile) }}"
                                                                     class="img-circle elevation-2" alt="User Image"
                                                                     style="width:20%;">
+                                                                @php
+                                                                    $admin1 = \App\User::find($note->admin_id);
+                                                                @endphp
+                                                                {{ $admin1->name }}
                                                             </a>
+
+
+                                                            @php
+                                                                $date = Carbon\Carbon::now();
+                                                                $interval = $note->created_at->diffForHumans($date);
+                                                            @endphp
+
+                                                            <br>
+
+                                                            {{-- <span style="direction: ltr !important"
+                                                                class="badge badge-success">{{ $interval }}</span> --}}
                                                             {{ $note->created_at }}
                                                         </div>
                                                     </div>
@@ -358,8 +374,8 @@
 
                                                 <div class="row mt-3">
                                                     {{ $withdrawals->appends(request()->query())->links() }}</div>
-
-                                            @else <h3 class="p-4">
+                                            @else
+                                                <h3 class="p-4">
                                                     {{ __('You have no recorded profit withdrawal requests') }}</h3>
                                             @endif
                                         </div>
@@ -402,8 +418,6 @@
                                         </div>
                                     </div>
                                 @else
-
-
                                     <div class="table-responsive">
 
 
@@ -552,7 +566,6 @@
                                             <a href="{{ route('products.create', app()->getLocale()) }}"> <button
                                                     type="button"
                                                     class="btn btn-primary">{{ __('Create product') }}</button></a>
-
                                         @else
                                             <a href="#" aria-disabled="true"> <button type="button"
                                                     class="btn btn-primary">{{ __('Create product') }}</button></a>
@@ -769,7 +782,8 @@
                                                         @endif
 
                                                         @if ($product->limits()->where('product_id', $product->id)->get()->count() != 0)
-                                                            <span class='badge badge-danger'>{{ __('Unlimited') }}</span>
+                                                            <span
+                                                                class='badge badge-danger'>{{ __('Unlimited') }}</span>
                                                         @endif
 
                                                     </td>
@@ -829,9 +843,6 @@
                                                                     data-target="#modal-primary-{{ $product->id }}">
                                                                     {{ __('Change Product Status') }}
                                                                 </button>
-
-
-
                                                             @else
                                                                 <a class="btn btn-info btn-sm" href="#"
                                                                     aria-disabled="true">
@@ -900,8 +911,8 @@
                             </form>
 
                             <div class="row mt-3"> {{ $products->appends(request()->query())->links() }}</div>
-
-                        @else <h3 class="pl-2">{{ __('No products To Show') }}</h3>
+                        @else
+                            <h3 class="pl-2">{{ __('No products To Show') }}</h3>
             @endif
         </div>
         <!-- /.card-body -->
@@ -1031,7 +1042,8 @@
                                         {{ __('pending') }}</option>
                                     <option value="confirmed" {{ request()->status == 'confirmed' ? 'selected' : '' }}>
                                         {{ __('confirmed') }}</option>
-                                    <option value="on the way" {{ request()->status == 'on the way' ? 'selected' : '' }}>
+                                    <option value="on the way"
+                                        {{ request()->status == 'on the way' ? 'selected' : '' }}>
                                         {{ __('on the way') }}</option>
                                     <option value="delivered"
                                         {{ request()->status == 'compdeliveredleted' ? 'selected' : '' }}>
@@ -1107,7 +1119,8 @@
 
                                                     @switch($order->status)
                                                         @case('pending')
-                                                            <span class="badge badge-warning badge-lg">{{ __('pending') }}</span>
+                                                            <span
+                                                                class="badge badge-warning badge-lg">{{ __('pending') }}</span>
                                                         @break
 
                                                         @case('confirmed')
@@ -1116,7 +1129,8 @@
                                                         @break
 
                                                         @case('on the way')
-                                                            <span class="badge badge-info badge-lg">{{ __('on the way') }}</span>
+                                                            <span
+                                                                class="badge badge-info badge-lg">{{ __('on the way') }}</span>
                                                         @break
 
                                                         @case('delivered')
@@ -1125,7 +1139,8 @@
                                                         @break
 
                                                         @case('canceled')
-                                                            <span class="badge badge-danger badge-lg">{{ __('canceled') }}</span>
+                                                            <span
+                                                                class="badge badge-danger badge-lg">{{ __('canceled') }}</span>
                                                         @break
 
                                                         @case('in the mandatory period')
@@ -1134,7 +1149,8 @@
                                                         @break
 
                                                         @case('returned')
-                                                            <span class="badge badge-danger badge-lg">{{ __('returned') }}</span>
+                                                            <span
+                                                                class="badge badge-danger badge-lg">{{ __('returned') }}</span>
                                                         @break
 
                                                         @default
@@ -1205,8 +1221,8 @@
                             </table>
 
                             <div class="row mt-3"> {{ $orders->appends(request()->query())->links() }}</div>
-
-                        @else <h3 class="pl-2">No orders To Show</h3>
+                        @else
+                            <h3 class="pl-2">No orders To Show</h3>
     @endif
     </div>
     <!-- /.card-body -->
@@ -1300,7 +1316,8 @@
                                             {{ __('pending') }}</option>
                                         <option value="confirmed" {{ $order->status == 'confirmed' ? 'selected' : '' }}>
                                             {{ __('confirmed') }}</option>
-                                        <option value="on the way" {{ $order->status == 'on the way' ? 'selected' : '' }}>
+                                        <option value="on the way"
+                                            {{ $order->status == 'on the way' ? 'selected' : '' }}>
                                             {{ __('on the way') }}</option>
                                         <option value="delivered"
                                             {{ $order->status == 'compdeliveredleted' ? 'selected' : '' }}>
@@ -1429,7 +1446,8 @@
                                         {{ __('pending') }}</option>
                                     <option value="confirmed" {{ request()->status == 'confirmed' ? 'selected' : '' }}>
                                         {{ __('confirmed') }}</option>
-                                    <option value="on the way" {{ request()->status == 'on the way' ? 'selected' : '' }}>
+                                    <option value="on the way"
+                                        {{ request()->status == 'on the way' ? 'selected' : '' }}>
                                         {{ __('on the way') }}</option>
                                     <option value="delivered"
                                         {{ request()->status == 'compdeliveredleted' ? 'selected' : '' }}>
@@ -1498,7 +1516,8 @@
 
                                                     @switch($order->status)
                                                         @case('pending')
-                                                            <span class="badge badge-warning badge-lg">{{ __('pending') }}</span>
+                                                            <span
+                                                                class="badge badge-warning badge-lg">{{ __('pending') }}</span>
                                                         @break
 
                                                         @case('confirmed')
@@ -1507,7 +1526,8 @@
                                                         @break
 
                                                         @case('on the way')
-                                                            <span class="badge badge-info badge-lg">{{ __('on the way') }}</span>
+                                                            <span
+                                                                class="badge badge-info badge-lg">{{ __('on the way') }}</span>
                                                         @break
 
                                                         @case('delivered')
@@ -1516,7 +1536,8 @@
                                                         @break
 
                                                         @case('canceled')
-                                                            <span class="badge badge-danger badge-lg">{{ __('canceled') }}</span>
+                                                            <span
+                                                                class="badge badge-danger badge-lg">{{ __('canceled') }}</span>
                                                         @break
 
                                                         @case('in the mandatory period')
@@ -1525,7 +1546,8 @@
                                                         @break
 
                                                         @case('returned')
-                                                            <span class="badge badge-danger badge-lg">{{ __('returned') }}</span>
+                                                            <span
+                                                                class="badge badge-danger badge-lg">{{ __('returned') }}</span>
                                                         @break
 
                                                         @default
@@ -1555,8 +1577,8 @@
                                 </table>
 
                                 <div class="row mt-3"> {{ $vorders->appends(request()->query())->links() }}</div>
-
-                            @else <h3 class="pl-2">{{ __('You do not have orders to view') }}</h3>
+                            @else
+                                <h3 class="pl-2">{{ __('You do not have orders to view') }}</h3>
                             @endif
                         </div>
                         <!-- /.card-body -->

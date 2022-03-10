@@ -172,15 +172,23 @@ class ProductsController extends Controller
 
         $average = ceil($average / $count);
 
+
+
         $price =  ceil($request['vendor_price'] *  ceil($average) / 100);
 
 
+
+
+
         $price = $price + ceil($request['fixed_price']);
+
 
         $price1 = $price;
 
 
         $price = ceil($price * setting('tax') / 100);
+
+
 
         $price = $price + $price1;
 
@@ -189,7 +197,11 @@ class ProductsController extends Controller
         $total_profit = $price;
 
 
+
+
         $price = $price + ceil($request['vendor_price']);
+
+
 
 
 
@@ -480,8 +492,7 @@ class ProductsController extends Controller
             $count++;
         }
 
-
-
+        $average = ceil($average / $count);
 
 
         $price =  ceil($request['vendor_price'] *  ceil($average) / 100);
