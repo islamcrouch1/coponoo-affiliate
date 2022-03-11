@@ -87,7 +87,7 @@
                                 <i class="fas fa-times"></i></button>
                         </div>
                     </div>
-                    <div class="card-body p-0">
+                    <div class="card-body p-0 table-responsive">
 
                         <div class="row">
 
@@ -247,7 +247,7 @@
                                                 <a style="color:#ffffff" class="btn btn-primary btn-sm"
                                                     href="{{ route('orders.order.show', ['lang' => app()->getLocale(), 'order' => $order->id]) }}">
                                                     {{ __('Order Display') }}
-                                                    
+
                                                 </a>
 
                                                 @if ($order->status == 'pending')
@@ -319,7 +319,7 @@
                     </div>
                     </div>
 
-                    <div class="card-body p-0">
+                    <div class="card-body p-0 table-responsive">
 
 
                     <div class="box-body">

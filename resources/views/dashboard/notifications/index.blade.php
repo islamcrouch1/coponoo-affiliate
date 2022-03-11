@@ -61,7 +61,7 @@
                         <i class="fas fa-times"></i></button>
                 </div>
             </div>
-            <div class="card-body p-0">
+            <div class="card-body p-0 table-responsive">
                 @if ($notifications->count() > 0)
                     <table class="table table-striped projects">
                         <thead>

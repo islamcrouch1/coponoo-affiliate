@@ -87,7 +87,7 @@
                                 <i class="fas fa-times"></i></button>
                         </div>
                     </div>
-                    <div class="card-body p-0">
+                    <div class="card-body p-0 table-responsive">
 
                         <div class="row">
 
@@ -222,8 +222,8 @@
                             </table>
 
                             <div class="row mt-3"> {{ $orders->appends(request()->query())->links() }}</div>
-
-                        @else <h3 class="p-4">{{ __('You do not have orders to view') }}</h3>
+                        @else
+                            <h3 class="p-4">{{ __('You do not have orders to view') }}</h3>
                         @endif
                     </div>
                     <!-- /.card-body -->
@@ -251,7 +251,7 @@
                     </div>
                     </div>
 
-                    <div class="card-body p-0">
+                    <div class="card-body p-0 table-responsive">
 
 
                     <div class="box-body">

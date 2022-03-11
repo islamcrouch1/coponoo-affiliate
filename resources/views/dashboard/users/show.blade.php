@@ -309,7 +309,7 @@
                                                     <i class="fas fa-times"></i></button>
                                             </div>
                                         </div>
-                                        <div class="card-body p-0">
+                                        <div class="card-body p-0 table-responsive">
                                             @if ($withdrawals->count() > 0)
                                                 <table class="table table-striped projects">
                                                     <thead>
@@ -409,7 +409,7 @@
                                 <h3 class="card-title">{{ __('Financial Operations Archive') }}</h3>
                             </div>
 
-                            <div class="card-body p-0">
+                            <div class="card-body p-0 table-responsive">
                                 @if ($user->requests->count() == 0)
                                     <div style="padding:20px" class="row">
                                         <div class="col-md-6 pt-3">
@@ -669,7 +669,7 @@
                                     <i class="fas fa-times"></i></button>
                             </div>
                         </div>
-                        <div class="card-body p-0">
+                        <div class="card-body p-0 table-responsive">
 
 
 
@@ -1087,7 +1087,7 @@
                                     <i class="fas fa-times"></i></button>
                             </div>
                         </div>
-                        <div class="card-body p-0">
+                        <div class="card-body p-0 table-responsive">
                             @if ($orders->count() > 0)
                                 <table class="table table-striped projects">
                                     <thead>
@@ -1250,7 +1250,7 @@
                 </div>
                 </div>
 
-                <div class="card-body p-0">
+                <div class="card-body p-0 table-responsive">
 
 
                 <div class="box-body">
@@ -1491,7 +1491,7 @@
                                     <i class="fas fa-times"></i></button>
                             </div>
                         </div>
-                        <div class="card-body p-0">
+                        <div class="card-body p-0 table-responsive">
                             @if ($vorders->count() > 0)
                                 <table class="table table-striped projects">
                                     <thead>
@@ -1606,7 +1606,7 @@
                       </div>
                       </div>
 
-                      <div class="card-body p-0">
+                      <div class="card-body p-0 table-responsive">
 
 
                       <div class="box-body">

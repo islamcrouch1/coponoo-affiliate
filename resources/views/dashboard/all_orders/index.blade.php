@@ -187,7 +187,7 @@
                                 <i class="fas fa-times"></i></button>
                         </div>
                     </div>
-                    <div class="card-body p-0">
+                    <div class="card-body p-0 table-responsive">
 
                         <form id="select-form" method="POST"
                             action="{{ route('orders-change-status-all', ['lang' => app()->getLocale()]) }}"
@@ -262,7 +262,7 @@
                                                 <td style="padding-bottom: 34px ;"><input class="form-check-input"
                                                         type="checkbox" value="{{ $order->id }}" class="cb-element"
                                                         name="checkAll[]" style="margin-right: 11px;
-                                                                                        margin-left: 11px"></td>
+                                                                                            margin-left: 11px"></td>
 
                                                 <td>{{ $order->id }}</td>
 
@@ -498,7 +498,7 @@
                     </div>
                     </div>
 
-                    <div class="card-body p-0">
+                    <div class="card-body p-0 table-responsive">
 
 
                     <div class="box-body">

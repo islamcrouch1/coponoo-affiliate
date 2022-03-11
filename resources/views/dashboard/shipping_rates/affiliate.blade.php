@@ -19,7 +19,7 @@
                 <h3 class="card-title">{{ __('Shipping Rates') }}</h3>
 
             </div>
-            <div class="card-body p-0">
+            <div class="card-body p-0 table-responsive">
                 @if ($shipping_rates->count() > 0)
                     <table class="table table-striped projects">
                         <thead>
@@ -38,7 +38,7 @@
                                 @foreach ($shipping_rates as $shipping_rate)
                                     <td>
                                         <small>
-                                            {{ app()->getLocale() == 'ar' ?  $shipping_rate->city_ar : $shipping_rate->city_en }}
+                                            {{ app()->getLocale() == 'ar' ? $shipping_rate->city_ar : $shipping_rate->city_en }}
                                         </small>
                                     </td>
                                     <td>
