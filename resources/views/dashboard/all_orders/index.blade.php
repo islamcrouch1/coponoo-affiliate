@@ -268,7 +268,7 @@
                                                         type="checkbox" value="{{ $order->id }}" class="cb-element"
                                                         name="checkAll[]"
                                                         style="margin-right: 11px;
-                                                                                                                            margin-left: 11px">
+                                                                                                                                                margin-left: 11px">
                                                 </td>
 
                                                 <td>{{ $order->id }}</td>
@@ -277,7 +277,7 @@
                                                         <a
                                                             href="{{ route('users.show', [app()->getLocale(), $order->user_id]) }}">{{ $order->user_name }}</a>
                                                     </small></td>
-                                                <td><small>{{ $order->client_name }}</small></td>
+                                                <td><small>{{ substr($order->client_name, 0, 90) }}</small></td>
                                                 <td><small>{{ $order->client_phone }}</small></td>
                                                 <td>
 
