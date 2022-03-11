@@ -55,6 +55,8 @@
                                     {{ __('in the mandatory period') }}</option>
                                 <option value="returned" {{ request()->status == 'returned' ? 'selected' : '' }}>
                                     {{ __('returned') }}</option>
+                                <option value="RTO" {{ request()->status == 'RTO' ? 'selected' : '' }}>
+                                    {{ __('RTO') }}</option>
                             </select>
                         </div>
                         <div class="col-md-2">
@@ -108,7 +110,8 @@
                                     href="{{ route('orders.vendor.show', ['lang' => app()->getLocale(), 'user' => Auth::id(), 'status' => 'canceled']) }}">{{ __('canceled') .' ( ' .\App\vOrder::where('user_id', Auth::id())->where('status', 'canceled')->count() .' )' }}</a>
                                 <a class="btn btn-info"
                                     href="{{ route('orders.vendor.show', ['lang' => app()->getLocale(), 'user' => Auth::id(), 'status' => 'returned']) }}">{{ __('returned') .' ( ' .\App\vOrder::where('user_id', Auth::id())->where('status', 'returned')->count() .' )' }}</a>
-
+                                <a class="btn btn-info"
+                                    href="{{ route('orders.vendor.show', ['lang' => app()->getLocale(), 'user' => Auth::id(), 'status' => 'RTO']) }}">{{ __('RTO') .' ( ' .\App\vOrder::where('user_id', Auth::id())->where('status', 'RTO')->count() .' )' }}</a>
                             </div>
 
                         </div>
@@ -120,7 +123,7 @@
 
                                         <th>#id</th>
                                         <th>{{ __('Order Status') }}</th>
-                                        <th class="text-center">{{ __('Total Amount') }}</th>
+                                        <th>{{ __('Total Amount') }}</th>
                                         <th> {{ __('Created At') }}</th>
                                         <th>{{ __('Updated At') }}</th>
                                         <th style="" class="">{{ __('Actions') }}</th>
@@ -168,6 +171,10 @@
                                                     @case('Waiting for the order amount to be released')
                                                         <span
                                                             class="badge badge-info badge-lg">{{ __('Waiting for the order amount to be released') }}</span>
+                                                    @break
+
+                                                    @case('RTO')
+                                                        <span class="badge badge-danger badge-lg">{{ __('RTO') }}</span>
                                                     @break
 
                                                     @default

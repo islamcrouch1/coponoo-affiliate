@@ -180,7 +180,7 @@
                 {{-- <h3 class="card-title">products</h3> --}}
                 <div class="row mt-3"> {{ $products->appends(request()->query())->links() }}</div>
 
-                <div class="card-tools">
+                {{-- <div class="card-tools">
 
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
@@ -188,7 +188,7 @@
                     <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip"
                         title="Remove">
                         <i class="fas fa-times"></i></button>
-                </div>
+                </div> --}}
             </div>
             <div class="card-body p-0 table-responsive">
 
@@ -273,7 +273,7 @@
                                         <td style="padding-bottom: 34px ;"><input class="form-check-input" type="checkbox"
                                                 value="{{ $product->id }}" class="cb-element" name="checkAll[]"
                                                 style="margin-right: 11px;
-                                                                                        margin-left: 11px;"></td>
+                                                                                            margin-left: 11px;"></td>
                                         <td>{{ $product->id }}</td>
                                         <td>{{ $product->SKU }}</td>
                                         <td><img alt="Avatar" class="table-avatar"

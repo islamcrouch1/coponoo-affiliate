@@ -136,7 +136,8 @@
                         href="{{ route('orders.affiliate.show', ['lang' => app()->getLocale(), 'user' => Auth::id(), 'status' => 'canceled']) }}">{{ __('canceled') . ' ( ' . $orders->where('status', 'canceled')->count() . ' )' }}</a>
                     <a class="btn btn-danger btn-lg"
                         href="{{ route('orders.affiliate.show', ['lang' => app()->getLocale(), 'user' => Auth::id(), 'status' => 'returned']) }}">{{ __('returned') . ' ( ' . $orders->where('status', 'returned')->count() . ' )' }}</a>
-
+                    <a class="btn btn-danger btn-lg"
+                        href="{{ route('orders.affiliate.show', ['lang' => app()->getLocale(), 'user' => Auth::id(), 'status' => 'RTO']) }}">{{ __('RTO') . ' ( ' . $orders->where('status', 'RTO')->count() . ' )' }}</a>
                 </div>
             </div>
         </section>
@@ -257,7 +258,8 @@
                         href="{{ route('orders.vendor.show', ['lang' => app()->getLocale(), 'user' => Auth::id(), 'status' => 'canceled']) }}">{{ __('canceled') . ' ( ' . $orders->where('status', 'canceled')->count() . ' )' }}</a>
                     <a class="btn btn-danger btn-lg"
                         href="{{ route('orders.vendor.show', ['lang' => app()->getLocale(), 'user' => Auth::id(), 'status' => 'returned']) }}">{{ __('returned') . ' ( ' . $orders->where('status', 'returned')->count() . ' )' }}</a>
-
+                    <a class="btn btn-danger btn-lg"
+                        href="{{ route('orders.vendor.show', ['lang' => app()->getLocale(), 'user' => Auth::id(), 'status' => 'RTO']) }}">{{ __('RTO') . ' ( ' . $orders->where('status', 'RTO')->count() . ' )' }}</a>
                 </div>
             </div>
         </section>

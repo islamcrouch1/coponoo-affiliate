@@ -1153,6 +1153,10 @@
                                                                 class="badge badge-danger badge-lg">{{ __('returned') }}</span>
                                                         @break
 
+                                                        @case('RTO')
+                                                            <span class="badge badge-danger badge-lg">{{ __('RTO') }}</span>
+                                                        @break
+
                                                         @default
                                                     @endswitch
 
@@ -1548,6 +1552,15 @@
                                                         @case('returned')
                                                             <span
                                                                 class="badge badge-danger badge-lg">{{ __('returned') }}</span>
+                                                        @break
+
+                                                        @case('Waiting for the order amount to be released')
+                                                            <span
+                                                                class="badge badge-info badge-lg">{{ __('Waiting for the order amount to be released') }}</span>
+                                                        @break
+
+                                                        @case('RTO')
+                                                            <span class="badge badge-danger badge-lg">{{ __('RTO') }}</span>
                                                         @break
 
                                                         @default

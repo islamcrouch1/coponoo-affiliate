@@ -55,6 +55,8 @@
                                     {{ __('in the mandatory period') }}</option>
                                 <option value="returned" {{ request()->status == 'returned' ? 'selected' : '' }}>
                                     {{ __('returned') }}</option>
+                                <option value="RTO" {{ request()->status == 'RTO' ? 'selected' : '' }}>
+                                    {{ __('RTO') }}</option>
                             </select>
                         </div>
                         <div class="col-md-2">
@@ -107,7 +109,8 @@
                                     href="{{ route('orders.affiliate.show', ['lang' => app()->getLocale(), 'user' => Auth::id(), 'status' => 'canceled']) }}">{{ __('canceled') .' ( ' .\App\Order::where('user_id', Auth::id())->where('status', 'canceled')->count() .' )' }}</a>
                                 <a class="btn btn-info"
                                     href="{{ route('orders.affiliate.show', ['lang' => app()->getLocale(), 'user' => Auth::id(), 'status' => 'returned']) }}">{{ __('returned') .' ( ' .\App\Order::where('user_id', Auth::id())->where('status', 'returned')->count() .' )' }}</a>
-
+                                <a class="btn btn-info"
+                                    href="{{ route('orders.affiliate.show', ['lang' => app()->getLocale(), 'user' => Auth::id(), 'status' => 'RTO']) }}">{{ __('RTO') .' ( ' .\App\Order::where('user_id', Auth::id())->where('status', 'RTO')->count() .' )' }}</a>
                             </div>
 
                         </div>
@@ -119,13 +122,13 @@
 
                                         <th>#id</th>
                                         <th>{{ __('Client Name') }}</th>
-                                        <th class="text-center">{{ __('Client Phone') }}</th>
+                                        <th>{{ __('Client Phone') }}</th>
                                         <th>{{ __('Order Status') }}</th>
-                                        <th class="text-center">{{ __('Total Amount') }}</th>
+                                        <th>{{ __('Total Amount') }}</th>
                                         <th>{{ __('Commission') }}</th>
                                         <th> {{ __('Created At') }}</th>
                                         <th>{{ __('Updated At') }}</th>
-                                        <th style="" class="">{{ __('Actions') }}</th>
+                                        <th>{{ __('Actions') }}</th>
 
                                     </tr>
                                 </thead>
@@ -167,6 +170,10 @@
 
                                                     @case('returned')
                                                         <span class="badge badge-danger badge-lg">{{ __('returned') }}</span>
+                                                    @break
+
+                                                    @case('RTO')
+                                                        <span class="badge badge-danger badge-lg">{{ __('RTO') }}</span>
                                                     @break
 
                                                     @default

@@ -406,10 +406,10 @@
             background-color: #ffffff !important;
         }
 
-        .table td {
+        /* .table td {
             padding: 0 !important;
             width: 30px;
-        }
+        } */
 
         .btnn {
             width: 30px !important;
@@ -421,7 +421,7 @@
         }
 
         .order-i {
-            width: 40px;
+            width: 40%;
 
             margin: 3px;
         }

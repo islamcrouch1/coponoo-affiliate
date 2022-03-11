@@ -90,6 +90,8 @@
                                     {{ __('canceled') }}</option>
                                 <option value="returned" {{ request()->status == 'returned' ? 'selected' : '' }}>
                                     {{ __('returned') }}</option>
+                                <option value="RTO" {{ request()->status == 'RTO' ? 'selected' : '' }}>
+                                    {{ __('RTO') }}</option>
                             </select>
                         </div>
 
@@ -139,6 +141,7 @@
                                 <option value="delivered">{{ __('delivered') }}</option>
                                 <option value="canceled">{{ __('canceled') }}</option>
                                 <option value="returned">{{ __('returned') }}</option>
+                                <option value="RTO">{{ __('RTO') }}</option>
                             </select>
                         </div>
 
@@ -206,6 +209,7 @@
                                         <option value="delivered">{{ __('delivered') }}</option>
                                         <option value="canceled">{{ __('canceled') }}</option>
                                         <option value="returned">{{ __('returned') }}</option>
+                                        <option value="RTO">{{ __('RTO') }}</option>
                                     </select>
                                 </div>
 
@@ -229,7 +233,8 @@
                                         href="{{ route('all_orders.index', ['lang' => app()->getLocale(), 'status' => 'canceled']) }}">{{ __('canceled') . ' ( ' . \App\Order::where('status', 'canceled')->count() . ' )' }}</a>
                                     <a class="btn btn-info"
                                         href="{{ route('all_orders.index', ['lang' => app()->getLocale(), 'status' => 'returned']) }}">{{ __('returned') . ' ( ' . \App\Order::where('status', 'returned')->count() . ' )' }}</a>
-
+                                    <a class="btn btn-info"
+                                        href="{{ route('all_orders.index', ['lang' => app()->getLocale(), 'status' => 'RTO']) }}">{{ __('RTO') . ' ( ' . \App\Order::where('status', 'RTO')->count() . ' )' }}</a>
                                 </div>
 
                             </div>
@@ -261,8 +266,10 @@
                                             @foreach ($orders as $order)
                                                 <td style="padding-bottom: 34px ;"><input class="form-check-input"
                                                         type="checkbox" value="{{ $order->id }}" class="cb-element"
-                                                        name="checkAll[]" style="margin-right: 11px;
-                                                                                            margin-left: 11px"></td>
+                                                        name="checkAll[]"
+                                                        style="margin-right: 11px;
+                                                                                                                            margin-left: 11px">
+                                                </td>
 
                                                 <td>{{ $order->id }}</td>
 
@@ -304,6 +311,10 @@
 
                                                         @case('returned')
                                                             <span class="badge badge-danger badge-lg">{{ __('returned') }}</span>
+                                                        @break
+
+                                                        @case('RTO')
+                                                            <span class="badge badge-danger badge-lg">{{ __('RTO') }}</span>
                                                         @break
 
                                                         @default
@@ -398,7 +409,7 @@
 
 
 
-                                                    @if ($order->status != 'canceled' && $order->status != 'returned')
+                                                    @if ($order->status != 'canceled' && $order->status != 'returned' && $order->status != 'RTO')
                                                         <button type="button" class="btn btn-primary btn-sm order-i"
                                                             data-toggle="modal"
                                                             data-target="#modal-primary-{{ $order->id }}"
@@ -406,10 +417,11 @@
                                                             title=" {{ __('Change Request Status') }}">
                                                             <i style="color:#ffffff"
                                                                 class=" fas fa-solid fa-calendar-check"></i>
+                                                        </button>
                                                     @endif
 
                                                     @if (auth()->user()->hasPermission('onotes-read'))
-                                                        <button style="margin-right: 6px" type="button"
+                                                        <button style="" type="button"
                                                             class="btn btn-success btn-sm order-i" data-toggle="modal"
                                                             data-target="#modal-danger-{{ $order->id }}"
                                                             data-toggle="tooltip" data-placement="top"
@@ -662,6 +674,8 @@
                                             {{ __('canceled') }}</option>
                                         <option value="returned" {{ $order->status == 'returned' ? 'selected' : '' }}>
                                             {{ __('returned') }}</option>
+                                        <option value="RTO" {{ $order->status == 'RTO' ? 'selected' : '' }}>
+                                            {{ __('RTO') }}</option>
                                     </select>
                                     @error('status')
                                         <span class="invalid-feedback" role="alert">
