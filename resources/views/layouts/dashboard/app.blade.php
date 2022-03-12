@@ -412,7 +412,7 @@
         } */
 
         .btnn {
-            width: 30px !important;
+            width: 40% !important;
         }
 
         .card-header>.card-tools ::after {

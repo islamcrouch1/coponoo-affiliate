@@ -273,7 +273,8 @@
                                         <td style="padding-bottom: 34px ;"><input class="form-check-input" type="checkbox"
                                                 value="{{ $product->id }}" class="cb-element" name="checkAll[]"
                                                 style="margin-right: 11px;
-                                                                                            margin-left: 11px;"></td>
+                                                                                                            margin-left: 11px;">
+                                        </td>
                                         <td>{{ $product->id }}</td>
                                         <td>{{ $product->SKU }}</td>
                                         <td><img alt="Avatar" class="table-avatar"
@@ -411,25 +412,26 @@
                                                 @endif
                                             @else
                                                 @if (auth()->user()->hasPermission('products-restore'))
-                                                    <a class="btn btn-info btn-sm"
+                                                    <a class="btn btn-info btn-sm btnn" data-toggle="tooltip"
+                                                        data-placement="top" title=" {{ __('Restore') }}"
                                                         href="{{ route('products.restore', ['lang' => app()->getLocale(), 'product' => $product->id]) }}">
-                                                        <i class="fas fa-pencil-alt">
+                                                        <i class="fas fa-trash-restore">
                                                         </i>
-                                                        {{ __('Restore') }}
                                                     </a>
                                                 @else
-                                                    <a class="btn btn-info btn-sm" href="#" aria-disabled="true">
-                                                        <i class="fas fa-pencil-alt">
+                                                    <a class="btn btn-info btn-sm" href="#" aria-disabled="true"
+                                                        data-toggle="tooltip" data-placement="top"
+                                                        title=" {{ __('Restore') }}">
+                                                        <i class="fas fa-trash-restore">
                                                         </i>
-                                                        {{ __('Restore') }}
                                                     </a>
                                                 @endif
                                             @endif
 
-                                            @if (auth()->user()->hasPermission('products-delete') |
+                                            @if (auth()->user()->hasPermission('products-delete') ||
     auth()->user()->hasPermission('products-trash'))
                                                 <a href="{{ route('products.destroy.new', ['lang' => app()->getLocale(), 'product' => $product->id]) }}"
-                                                    class="btn btn-danger btn-sm delete" data-toggle="tooltip"
+                                                    class="btn btn-danger btn-sm delete btnn" data-toggle="tooltip"
                                                     data-placement="top" title=" {{ __('Delete') }}">
                                                     <i class="fas fa-trash">
                                                     </i>
