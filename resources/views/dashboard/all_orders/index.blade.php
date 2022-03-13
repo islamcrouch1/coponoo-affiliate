@@ -399,7 +399,7 @@
                                                             <i class=" fas fa-solid fa-circle"></i>                                                    @endif
 
                                                     @if (auth()->user()->hasPermission('onotes-read'))
-                                                        <button type="button" class="btn btn-primary btn-sm order-i" data-toggle="tooltip" data-placement="top" title="  {{ __('Notes') }}"
+                                                        <button type="button" class="btn btn-primary btn-sm order-i " data-toggle="tooltip" data-placement="top" title="  {{ __('Notes') }}"
                                                         data-toggle="modal"
                                                             data-toggle="modal"
                                                             data-target="#modal-danger-{{ $order->id }}">

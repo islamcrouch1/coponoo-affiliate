@@ -416,9 +416,8 @@
             padding: 0px !important;
         }
         .order-i{
-            width:40px;
-        
-            margin: 3px;
+            width:40px; 
+            
         }
 
 
