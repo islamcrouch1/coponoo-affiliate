@@ -148,7 +148,7 @@
                         <h3 class="card-title">{{ __('Financial Operations Archive') }}</h3>
                     </div>
 
-                    <div class="card-body p-0">
+                    <div class="card-body p-0 table-responsive">
                         @if ($user->requests->count() == 0)
                             <div style="padding:20px" class="row">
                                 <div class="col-md-6 pt-3">
@@ -156,8 +156,6 @@
                                 </div>
                             </div>
                         @else
-
-
                             <div class="table-responsive">
 
 
@@ -190,7 +188,8 @@
                                                     {{ app()->getLocale() == 'ar' ? $request->request_ar : $request->request_en }}
                                                 </td>
                                                 <td style="">{{ '# ' . $request->order_id }}</td>
-                                                <td style="">{{ $request->balance }} {{ ' ' . $user->country->currency }}
+                                                <td style="">{{ $request->balance }}
+                                                    {{ ' ' . $user->country->currency }}
                                                 </td>
                                                 <td style="">{{ $request->created_at }}</td>
                                             </tr>
@@ -230,7 +229,8 @@
                                 <option value="" selected>{{ __('All Status') }}</option>
                                 <option value="pending" {{ request()->status == 'pending' ? 'selected' : '' }}>
                                     {{ __('pending') }}</option>
-                                <option value="recieved" {{ request()->status == 'confirmrecieveded' ? 'selected' : '' }}>
+                                <option value="recieved"
+                                    {{ request()->status == 'confirmrecieveded' ? 'selected' : '' }}>
                                     {{ __('recieved') }}</option>
                                 <option value="confirmed" {{ request()->status == 'confirmed' ? 'selected' : '' }}>
                                     {{ __('confirmed') }}</option>
@@ -268,7 +268,7 @@
                                 <i class="fas fa-times"></i></button>
                         </div>
                     </div>
-                    <div class="card-body p-0">
+                    <div class="card-body p-0 table-responsive">
                         @if ($withdrawals->count() > 0)
                             <table class="table table-striped projects">
                                 <thead>
@@ -294,7 +294,8 @@
                                         <tr>
 
                                             <td style="">{{ $withdraw->id }}</td>
-                                            <td style="">{{ $withdraw->amount }} {{ ' ' . $user->country->currency }}</td>
+                                            <td style="">{{ $withdraw->amount }} {{ ' ' . $user->country->currency }}
+                                            </td>
                                             <td style="">{{ $withdraw->created_at }}</td>
                                             <td style="">
 
@@ -331,8 +332,8 @@
                             </table>
 
                             <div class="row mt-3"> {{ $withdrawals->appends(request()->query())->links() }}</div>
-
-                        @else <h3 class="p-4">{{ __('You have no recorded profit withdrawal requests') }}
+                        @else
+                            <h3 class="p-4">{{ __('You have no recorded profit withdrawal requests') }}
                             </h3>
                         @endif
                     </div>

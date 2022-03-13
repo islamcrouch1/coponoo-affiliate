@@ -90,6 +90,8 @@
                                     {{ __('canceled') }}</option>
                                 <option value="returned" {{ request()->status == 'returned' ? 'selected' : '' }}>
                                     {{ __('returned') }}</option>
+                                <option value="RTO" {{ request()->status == 'RTO' ? 'selected' : '' }}>
+                                    {{ __('RTO') }}</option>
                             </select>
                         </div>
 
@@ -139,6 +141,7 @@
                                 <option value="delivered">{{ __('delivered') }}</option>
                                 <option value="canceled">{{ __('canceled') }}</option>
                                 <option value="returned">{{ __('returned') }}</option>
+                                <option value="RTO">{{ __('RTO') }}</option>
                             </select>
                         </div>
 
@@ -187,7 +190,7 @@
                                 <i class="fas fa-times"></i></button>
                         </div>
                     </div>
-                    <div class="card-body p-0">
+                    <div class="card-body p-0 table-responsive">
 
                         <form id="select-form" method="POST"
                             action="{{ route('orders-change-status-all', ['lang' => app()->getLocale()]) }}"
@@ -206,6 +209,7 @@
                                         <option value="delivered">{{ __('delivered') }}</option>
                                         <option value="canceled">{{ __('canceled') }}</option>
                                         <option value="returned">{{ __('returned') }}</option>
+                                        <option value="RTO">{{ __('RTO') }}</option>
                                     </select>
                                 </div>
 
@@ -229,7 +233,8 @@
                                         href="{{ route('all_orders.index', ['lang' => app()->getLocale(), 'status' => 'canceled']) }}">{{ __('canceled') . ' ( ' . \App\Order::where('status', 'canceled')->count() . ' )' }}</a>
                                     <a class="btn btn-info"
                                         href="{{ route('all_orders.index', ['lang' => app()->getLocale(), 'status' => 'returned']) }}">{{ __('returned') . ' ( ' . \App\Order::where('status', 'returned')->count() . ' )' }}</a>
-
+                                    <a class="btn btn-info"
+                                        href="{{ route('all_orders.index', ['lang' => app()->getLocale(), 'status' => 'RTO']) }}">{{ __('RTO') . ' ( ' . \App\Order::where('status', 'RTO')->count() . ' )' }}</a>
                                 </div>
 
                             </div>
@@ -261,7 +266,10 @@
                                             @foreach ($orders as $order)
                                                 <td style="padding-bottom: 34px ;"><input class="form-check-input"
                                                         type="checkbox" value="{{ $order->id }}" class="cb-element"
-                                                        name="checkAll[]"></td>
+                                                        name="checkAll[]"
+                                                        style="margin-right: 11px;
+                                                                                                                                                margin-left: 11px">
+                                                </td>
 
                                                 <td>{{ $order->id }}</td>
 
@@ -269,7 +277,7 @@
                                                         <a
                                                             href="{{ route('users.show', [app()->getLocale(), $order->user_id]) }}">{{ $order->user_name }}</a>
                                                     </small></td>
-                                                <td><small>{{ $order->client_name }}</small></td>
+                                                <td><small>{{ substr($order->client_name, 0, 90) }}</small></td>
                                                 <td><small>{{ $order->client_phone }}</small></td>
                                                 <td>
 
@@ -279,7 +287,8 @@
                                                         @break
 
                                                         @case('confirmed')
-                                                            <span class="badge badge-primary badge-lg">{{ __('confirmed') }}</span>
+                                                            <span
+                                                                class="badge badge-primary badge-lg">{{ __('confirmed') }}</span>
                                                         @break
 
                                                         @case('on the way')
@@ -287,7 +296,8 @@
                                                         @break
 
                                                         @case('delivered')
-                                                            <span class="badge badge-success badge-lg">{{ __('delivered') }}</span>
+                                                            <span
+                                                                class="badge badge-success badge-lg">{{ __('delivered') }}</span>
                                                         @break
 
                                                         @case('canceled')
@@ -301,6 +311,10 @@
 
                                                         @case('returned')
                                                             <span class="badge badge-danger badge-lg">{{ __('returned') }}</span>
+                                                        @break
+
+                                                        @case('RTO')
+                                                            <span class="badge badge-danger badge-lg">{{ __('RTO') }}</span>
                                                         @break
 
                                                         @default
@@ -379,12 +393,15 @@
 
 
 
-                                                    <a  class="btn btn-info btn-sm order-i" data-toggle="tooltip" data-placement="top" title=" {{ __('Affiliate Info') }}"
+                                                    <a class="btn btn-info btn-sm order-i" data-toggle="tooltip"
+                                                        data-placement="top" title=" {{ __('Affiliate Info') }}"
                                                         href="{{ route('users.show', [app()->getLocale(), $order->user->id]) }}">
-                                                        <i class=" fas fa-solid fa-user"></i>                                                    </a>
+                                                        <i class=" fas fa-solid fa-user"></i> </a>
 
 
-                                                    <a style="color:#ffffff" class="btn btn-primary btn-sm order-i"data-toggle="tooltip" data-placement="top" title="  {{ __('Order Display') }}"
+                                                    <a style="color:#ffffff" class="btn btn-secondary btn-sm order-i"
+                                                        data-toggle="tooltip" data-placement="top"
+                                                        title="  {{ __('Order Display') }}"
                                                         href="{{ route('orders.order.show', ['lang' => app()->getLocale(), 'order' => $order->id]) }}">
                                                         <i class="fas fa-solid fa-tv"></i>
 
@@ -392,17 +409,30 @@
 
 
 
-                                                    @if ($order->status != 'canceled' && $order->status != 'returned')
-                                                        <button type="button" class="btn btn-primary btn-sm order-i" data-toggle="tooltip" data-placement="top" title=" {{ __('Change Request Status') }}"
+                                                    @if ($order->status != 'canceled' && $order->status != 'returned' && $order->status != 'RTO')
+                                                        <button type="button" class="btn btn-primary btn-sm order-i"
                                                             data-toggle="modal"
-                                                            data-target="#modal-primary-{{ $order->id }}">
-                                                            <i class=" fas fa-solid fa-circle"></i>                                                    @endif
+                                                            data-target="#modal-primary-{{ $order->id }}"
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title=" {{ __('Change Request Status') }}">
+                                                            <i style="color:#ffffff"
+                                                                class=" fas fa-solid fa-calendar-check"></i>
+                                                        </button>
+                                                    @endif
 
                                                     @if (auth()->user()->hasPermission('onotes-read'))
+<<<<<<< HEAD
                                                         <button type="button" class="btn btn-primary btn-sm order-i " data-toggle="tooltip" data-placement="top" title="  {{ __('Notes') }}"
                                                         data-toggle="modal"
                                                             data-toggle="modal"
                                                             data-target="#modal-danger-{{ $order->id }}">
+=======
+                                                        <button style="" type="button"
+                                                            class="btn btn-success btn-sm order-i" data-toggle="modal"
+                                                            data-target="#modal-danger-{{ $order->id }}"
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="  {{ __('Notes') }}" data-toggle="modal">
+>>>>>>> c49aa35afee2bb05cd0c48c5a9bb05cea7836557
                                                             <i class=" fas fa-solid fa-highlighter"></i>
                                                         </button>
                                                     @endif
@@ -487,7 +517,7 @@
                     </div>
                     </div>
 
-                    <div class="card-body p-0">
+                    <div class="card-body p-0 table-responsive">
 
 
                     <div class="box-body">
@@ -530,7 +560,8 @@
                         enctype="multipart/form-data">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">{{ __('Order Notes') . ' #' . $order->id }}
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                {{ __('Order Notes') . ' #' . $order->id }}
                             </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -637,7 +668,8 @@
                                             {{ __('pending') }}</option>
                                         <option value="confirmed" {{ $order->status == 'confirmed' ? 'selected' : '' }}>
                                             {{ __('confirmed') }}</option>
-                                        <option value="on the way" {{ $order->status == 'on the way' ? 'selected' : '' }}>
+                                        <option value="on the way"
+                                            {{ $order->status == 'on the way' ? 'selected' : '' }}>
                                             {{ __('on the way') }}</option>
                                         <option value="in the mandatory period"
                                             {{ $order->status == 'in the mandatory period' ? 'selected' : '' }}>
@@ -649,6 +681,8 @@
                                             {{ __('canceled') }}</option>
                                         <option value="returned" {{ $order->status == 'returned' ? 'selected' : '' }}>
                                             {{ __('returned') }}</option>
+                                        <option value="RTO" {{ $order->status == 'RTO' ? 'selected' : '' }}>
+                                            {{ __('RTO') }}</option>
                                     </select>
                                     @error('status')
                                         <span class="invalid-feedback" role="alert">

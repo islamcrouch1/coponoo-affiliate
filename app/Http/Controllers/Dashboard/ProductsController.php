@@ -824,7 +824,7 @@ class ProductsController extends Controller
 
         $categories = Category::with('products')
             ->where('country_id', $scountry->id)
-            ->where('parent', $product->category->id)
+            ->where('parent', $product->categories()->first()->id)
             ->get();
 
 
@@ -1016,7 +1016,7 @@ class ProductsController extends Controller
 
         $categories = Category::with('products')
             ->where('country_id', $scountry->id)
-            ->where('parent', $product->category->id)
+            ->where('parent', $product->categories()->first()->id)
             ->get();
 
 

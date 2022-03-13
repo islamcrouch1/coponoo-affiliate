@@ -39,12 +39,12 @@
 
                                 @php
                                     $cats = [];
-
+                                    
                                 @endphp
 
-                                @if ($product->category->parent != 'null')
+                                @if ($product->categories()->first()->parent != 'null')
                                     @php
-                                        $cat = \App\Category::where('id', $product->category->id)->first();
+                                        $cat = \App\Category::where('id', $product->categories()->first()->id)->first();
                                     @endphp
 
 
@@ -69,17 +69,14 @@
                                     @endphp
 
                                     <li class="breadcrumb-item active"> <a
-                                            href="{{ route('products.affiliate.cat', ['lang' => app()->getLocale(), 'category' => $product->category->id]) }}">{{ app()->getLocale() == 'ar' ? $product->category->name_ar : $product->category->name_en }}</a>
+                                            href="{{ route('products.affiliate.cat', ['lang' => app()->getLocale(),'category' => $product->categories()->first()->id]) }}">{{ app()->getLocale() == 'ar'? $product->categories()->first()->name_ar: $product->categories()->first()->name_en }}</a>
                                     </li>
                                     <li class="breadcrumb-item"> <a
                                             href="">{{ app()->getLocale() == 'ar' ? $product->name_ar : $product->name_en }}</a>
                                     </li>
-
-
                                 @else
-
                                     <li class="breadcrumb-item active"> <a
-                                            href="{{ route('products.affiliate.cat', ['lang' => app()->getLocale(), 'category' => $product->category->id]) }}">{{ app()->getLocale() == 'ar' ? $product->category->name_ar : $product->category->name_en }}</a>
+                                            href="{{ route('products.affiliate.cat', ['lang' => app()->getLocale(),'category' => $product->categories()->first()->id]) }}">{{ app()->getLocale() == 'ar'? $product->categories()->first()->name_ar: $product->categories()->first()->name_en }}</a>
                                     </li>
                                     <li class="breadcrumb-item"> <a
                                             href="">{{ app()->getLocale() == 'ar' ? $product->name_ar : $product->name_en }}</a>
@@ -94,7 +91,6 @@
                             @php
                                 $url = $product->images[0]->url;
                             @endphp
-
                         @else
                             @php
                                 $url = 'place-holder.png';
@@ -200,10 +196,7 @@
                                             <br>
                                             <i style="color:{{ $stock->color->hex }}" class="fas fa-circle fa-2x"></i>
                                         </label>
-
-
                                     @else
-
                                         <label class="btn btn-default text-center labl">
                                             <input type="radio" class="color-select"
                                                 data-url="{{ asset('storage/images/products/' . $url) }}"
@@ -279,9 +272,9 @@
 
                                         <div class="col-md-4">
                                             <input data-locale="{{ app()->getLocale() }}" id="max_price" type="number"
-                                                data-max="{{ $product->max_price }}" data-min="{{ $product->min_price }}"
-                                                min="{{ $product->min_price }}" max="{{ $product->max_price }}"
-                                                data-id="{{ $product->id }}"
+                                                data-max="{{ $product->max_price }}"
+                                                data-min="{{ $product->min_price }}" min="{{ $product->min_price }}"
+                                                max="{{ $product->max_price }}" data-id="{{ $product->id }}"
                                                 class="price-{{ $product->id }} product-price form-control @error('max_price') is-invalid @enderror"
                                                 name="price-{{ $product->id }}" value="{{ $sPrice }}">
 

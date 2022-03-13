@@ -151,7 +151,7 @@
                         <h3 class="card-title">{{ __('Financial Operations Archive') }}</h3>
                     </div>
 
-                    <div class="card-body p-0">
+                    <div class="card-body p-0 table-responsive">
                         @if ($user->requests->count() == 0)
                             <div style="padding:20px" class="row">
                                 <div class="col-md-6 pt-3">
@@ -159,8 +159,6 @@
                                 </div>
                             </div>
                         @else
-
-
                             <div class="table-responsive">
 
 
@@ -279,7 +277,7 @@
                                 <i class="fas fa-times"></i></button>
                         </div>
                     </div>
-                    <div class="card-body p-0">
+                    <div class="card-body p-0 table-responsive">
                         @if ($withdrawals->count() > 0)
                             <table class="table table-striped projects">
                                 <thead>
@@ -343,8 +341,8 @@
                             </table>
 
                             <div class="row mt-3"> {{ $withdrawals->appends(request()->query())->links() }}</div>
-
-                        @else <h6 class="p-4">{{ __('You have no recorded profit withdrawal requests') }}
+                        @else
+                            <h6 class="p-4">{{ __('You have no recorded profit withdrawal requests') }}
                             </h6>
                         @endif
                     </div>

@@ -43,6 +43,7 @@ use App\Order;
 use App\Product;
 use App\Vorder;
 use App\Withdrawal;
+use Carbon\Carbon;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class AdminUsersController extends Controller
@@ -67,11 +68,22 @@ class AdminUsersController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
+
+
+
+        if (!$request->has('from') || !$request->has('to')) {
+
+            $request->merge(['from' => Carbon::now()->subDay(365)->toDateString()]);
+            $request->merge(['to' => Carbon::now()->toDateString()]);
+        }
+
         $countries = Country::all();
         $roles = Role::WhereRoleNot('superadministrator')->get();
-        $users = User::whereRoleNot('superadministrator')
+        $users = User::whereDate('created_at', '>=', request()->from)
+            ->whereDate('created_at', '<=', request()->to)
+            ->whereRoleNot('superadministrator')
             ->whenSearch(request()->search)
             ->whenRole(request()->role_id)
             ->whenCountry(request()->country_id)

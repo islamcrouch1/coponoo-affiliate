@@ -250,4 +250,11 @@ Route::group(['prefix' => '{lang}', 'middleware' => ['role:superadministrator|ad
     Route::get('/mystock/products/', 'ProductsController@myStockProducts')->name('products.aff.mystock')->middleware('auth', 'verifiedphone', 'checkstatus');
     Route::get('/dashboard/stock/orders/', 'ProductsController@myStockordersAdmin')->name('stock.orders')->middleware('auth', 'verifiedphone', 'checkstatus');
     Route::get('/dashboard/stock/remove/{stock}/{product}', 'ProductsController@stockRemove')->name('stock.remove')->middleware('auth', 'verifiedphone', 'checkstatus');
+    Route::get('/dashboard/stock/change/{order}', 'ProductsController@myStockordersChange')->name('stock.orders.change')->middleware('auth', 'verifiedphone', 'checkstatus');
+
+
+    Route::post('/dashboard/myproducts-store/{user}/{product}', 'AproductsController@store')->name('aproducts.store')->middleware('auth', 'verifiedphone', 'checkstatus', 'checkuser');
+    Route::get('/dashboard/myproducts/{user}', 'AproductsController@show')->name('aproducts.show')->middleware('auth', 'verifiedphone', 'checkstatus', 'checkuser');
+    Route::get('/dashboard/myproducts-delete/{user}/{aproduct}', 'AproductsController@delete')->name('aproducts.delete')->middleware('auth', 'verifiedphone', 'checkstatus');
+    Route::get('/store/{user}', 'AproductsController@storeShow')->name('store.show')->middleware('auth', 'verifiedphone', 'checkstatus');
 });

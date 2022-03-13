@@ -42,7 +42,6 @@
                             @if (auth()->user()->hasPermission('bonus-create'))
                                 <a href="{{ route('bonus.create', app()->getLocale()) }}"> <button type="button"
                                         class="btn btn-primary">{{ __('Create bonus') }}</button></a>
-
                             @else
                                 <a href="#" aria-disabled="true"> <button type="button"
                                         class="btn btn-primary">{{ __('Create bonus') }}</button></a>
@@ -70,7 +69,7 @@
                         <i class="fas fa-times"></i></button>
                 </div>
             </div>
-            <div class="card-body p-0">
+            <div class="card-body p-0 table-responsive">
                 @if ($bonuses->count() > 0)
                     <table class="table table-striped projects">
                         <thead>
@@ -149,8 +148,8 @@
                 </table>
 
                 <div class="row mt-3"> {{ $bonuses->appends(request()->query())->links() }}</div>
-
-            @else <h3 class="p-2">{{ __('No data to show') }}</h3>
+            @else
+                <h3 class="p-2">{{ __('No data to show') }}</h3>
                 @endif
             </div>
             <!-- /.card-body -->

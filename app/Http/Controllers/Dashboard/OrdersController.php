@@ -942,7 +942,7 @@ class OrdersController extends Controller
                 }
 
 
-                if ($order->status == 'returned' || $order->status == 'canceled') {
+                if ($order->status == 'returned' || $order->status == 'canceled' || $order->status == 'RTO') {
 
 
 
@@ -956,7 +956,7 @@ class OrdersController extends Controller
                     return redirect()->route('all_orders.index', app()->getLocale());
                 }
 
-                if (($order->status == 'returned' && $request->status == 'canceled') || ($order->status == 'canceled' && $request->status == 'returned')) {
+                if ((($order->status == 'returned' || $order->status == 'RTO')  && $request->status == 'canceled') || (($order->status == 'canceled' || $order->status == 'RTO')  && $request->status == 'returned') || (($order->status == 'canceled' || $order->status == 'returned')  && $request->status == 'RTO')) {
 
 
 
@@ -972,7 +972,7 @@ class OrdersController extends Controller
 
 
 
-                if (($request->status == 'canceled' && $order->status == 'delivered')) {
+                if ((($request->status == 'canceled' || $request->status == 'RTO') && $order->status == 'delivered')) {
 
 
 
@@ -1021,7 +1021,10 @@ class OrdersController extends Controller
                         $status_en = "returned";
                         $status_ar = "مرتجع";
                         break;
-
+                    case "RTO":
+                        $status_en = "RTO";
+                        $status_ar = "فشل في التوصيل";
+                        break;
                     default:
                         break;
                 }
@@ -1093,7 +1096,7 @@ class OrdersController extends Controller
 
 
 
-                if ($request->status == 'canceled') {
+                if ($request->status == 'canceled' || $request->status == 'RTO') {
 
 
 
@@ -1346,7 +1349,10 @@ class OrdersController extends Controller
                             $status_en = "Waiting for the order amount to be released";
                             $status_ar = "في انتظار تحرير مبلغ الطلب";
                             break;
-
+                        case "RTO":
+                            $status_en = "RTO";
+                            $status_ar = "فشل في التوصيل";
+                            break;
                         default:
                             break;
                     }
@@ -1613,7 +1619,7 @@ class OrdersController extends Controller
 
 
 
-        if (($request->status == 'canceled' && $order->status == 'delivered')) {
+        if ((($request->status == 'canceled' || $request->status == 'RTO')  && $order->status == 'delivered')) {
 
 
 
@@ -1671,6 +1677,11 @@ class OrdersController extends Controller
                 $status_en = "returned";
                 $status_ar = "مرتجع";
                 break;
+            case "RTO":
+                $status_en = "RTO";
+                $status_ar = "فشل في التوصيل";
+                break;
+
 
             default:
                 break;
@@ -1745,7 +1756,7 @@ class OrdersController extends Controller
 
 
 
-        if ($request->status == 'canceled') {
+        if ($request->status == 'canceled' || $request->status == 'RTO') {
 
 
 
@@ -2000,6 +2011,10 @@ class OrdersController extends Controller
                 case "Waiting for the order amount to be released":
                     $status_en = "Waiting for the order amount to be released";
                     $status_ar = "في انتظار تحرير مبلغ الطلب";
+                    break;
+                case "RTO":
+                    $status_en = "RTO";
+                    $status_ar = "فشل في التوصيل";
                     break;
 
                 default:
