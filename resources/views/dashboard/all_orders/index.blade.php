@@ -390,14 +390,17 @@
 
 
                                                 <td class="project-actions">
-
-
+                                                    <div class="row">
+                                                        <div class="col-md-6">
 
                                                     <a class="btn btn-info btn-sm order-i" data-toggle="tooltip"
                                                         data-placement="top" title=" {{ __('Affiliate Info') }}"
                                                         href="{{ route('users.show', [app()->getLocale(), $order->user->id]) }}">
-                                                        <i class=" fas fa-solid fa-user"></i> </a>
+                                                        <i class=" fas fa-solid fa-user"></i>
+                                                     </a>
+                                                    </div>
 
+                                                    <div class="col-md-6">
 
                                                     <a style="color:#ffffff" class="btn btn-secondary btn-sm order-i"
                                                         data-toggle="tooltip" data-placement="top"
@@ -406,10 +409,13 @@
                                                         <i class="fas fa-solid fa-tv"></i>
 
                                                     </a>
+                                                    </div>
+                                                    
 
 
 
                                                     @if ($order->status != 'canceled' && $order->status != 'returned' && $order->status != 'RTO')
+                                                    <div class="col-md-6">
                                                         <button type="button" class="btn btn-primary btn-sm order-i"
                                                             data-toggle="modal"
                                                             data-target="#modal-primary-{{ $order->id }}"
@@ -418,23 +424,19 @@
                                                             <i style="color:#ffffff"
                                                                 class=" fas fa-solid fa-calendar-check"></i>
                                                         </button>
+                                                        </div>
                                                     @endif
 
                                                     @if (auth()->user()->hasPermission('onotes-read'))
-<<<<<<< HEAD
-                                                        <button type="button" class="btn btn-primary btn-sm order-i " data-toggle="tooltip" data-placement="top" title="  {{ __('Notes') }}"
-                                                        data-toggle="modal"
-                                                            data-toggle="modal"
-                                                            data-target="#modal-danger-{{ $order->id }}">
-=======
+                                                    <div class="col-md-6">
                                                         <button style="" type="button"
                                                             class="btn btn-success btn-sm order-i" data-toggle="modal"
                                                             data-target="#modal-danger-{{ $order->id }}"
                                                             data-toggle="tooltip" data-placement="top"
                                                             title="  {{ __('Notes') }}" data-toggle="modal">
->>>>>>> c49aa35afee2bb05cd0c48c5a9bb05cea7836557
                                                             <i class=" fas fa-solid fa-highlighter"></i>
                                                         </button>
+                                                    </div>
                                                     @endif
 
 
@@ -479,6 +481,7 @@
                                 @endif --}}
 
                                                 </td>
+                                            </div>
                                         </tr>
                             @endforeach
 

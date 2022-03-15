@@ -411,19 +411,18 @@
             width: 30px;
         } */
 
-        .btnn {
-            width: 40% !important;
-        }
-
+       
         .card-header>.card-tools ::after {
             margin-top: 0px !important;
             padding: 0px !important;
         }
 
         .order-i {
-            width: 40%;
+            width:100%;
 
-            margin: 3px;
+        }
+        .btnn{
+            width:100%;
         }
 
     </style>
