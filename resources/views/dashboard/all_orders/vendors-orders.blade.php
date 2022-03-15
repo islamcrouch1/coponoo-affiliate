@@ -288,19 +288,21 @@
 
 
                                                 <td class="project-actions">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
 
-
-
-                                                    <a class="btn btn-info btn-sm"
+                                                    <a class="btn btn-info btn-sm order-i"data-toggle="tooltip" data-placement="top" title="{{ __('Vendor Info') }}"
                                                         href="{{ route('users.show', [app()->getLocale(), $order->user->id]) }}">
-                                                        {{ __('Vendor Info') }}
+                                                        <i class=" fas fa-solid fa-user"></i>
                                                     </a>
 
-
-                                                    <a style="color:#ffffff" class="btn btn-primary btn-sm"
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                    <a style="color:#ffffff" class="btn btn-primary btn-sm order-i"data-toggle="tooltip" data-placement="top" title="{{ __('Order Display') }}"
                                                         href="{{ route('admin.vendors.orders.show', ['lang' => app()->getLocale(), 'order' => $order->id]) }}">
-                                                        {{ __('Order Display') }}
+                                                        <i class="fas fa-solid fa-tv"></i> 
                                                     </a>
+                                                        </div>
 
 
 
@@ -334,6 +336,7 @@
                                     @endif
 
                                 @endif --}}
+                            </div>
 
                                                 </td>
                                         </tr>

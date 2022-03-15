@@ -421,7 +421,7 @@
                                                             data-target="#modal-primary-{{ $order->id }}"
                                                             data-toggle="tooltip" data-placement="top"
                                                             title=" {{ __('Change Request Status') }}">
-                                                            <i style="color:#ffffff"
+                                                            <i style="color:#ffffff">
                                                                 class=" fas fa-solid fa-calendar-check"></i>
                                                         </button>
                                                         </div>

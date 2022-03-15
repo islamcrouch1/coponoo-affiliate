@@ -163,36 +163,46 @@
                                         </td>
                                     @endif
                                     <td class="project-actions">
+                                        <div class="row">
+                                           
 
                                         @if (!$shipping_rate->trashed())
                                             @if (auth()->user()->hasPermission('shipping_rates-update'))
-                                                <a class="btn btn-info btn-sm"
+                                            <div class="col-md-6">
+                                                <a class="btn btn-info btn-sm "data-toggle="tooltip" data-placement="top" title="{{ __('Edit') }}"
                                                     href="{{ route('shipping_rates.edit', ['lang' => app()->getLocale(), 'shipping_rate' => $shipping_rate->id]) }}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    {{ __('Edit') }}
+                                                   
                                                 </a>
+                                            </div>
                                             @else
-                                                <a class="btn btn-info btn-sm" href="#" aria-disabled="true">
+                                            <div class="col-md-6">
+                                                <a class="btn btn-info btn-sm "data-toggle="tooltip" data-placement="top" title="{{ __('Edit') }}" href="#" aria-disabled="true">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    {{ __('Edit') }}
+                                                    
                                                 </a>
+                                            </div>
                                             @endif
                                         @else
                                             @if (auth()->user()->hasPermission('shipping_rates-restore'))
-                                                <a class="btn btn-info btn-sm"
+                                            <div class="col-md-6">
+                                                <a class="btn btn-info btn-sm "data-toggle="tooltip" data-placement="top" title="{{ __('Restore') }}"
                                                     href="{{ route('shipping_rates.restore', ['lang' => app()->getLocale(), 'shipping_rate' => $shipping_rate->id]) }}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    {{ __('Restore') }}
+                                                    
                                                 </a>
+                                            </div>
                                             @else
-                                                <a class="btn btn-info btn-sm" href="#" aria-disabled="true">
+                                            <div class="col-md-6">
+                                                <a class="btn btn-info btn-sm " data-toggle="tooltip" data-placement="top" title=" {{ __('Restore') }}"href="#" aria-disabled="true">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    {{ __('Restore') }}
+                                                   
                                                 </a>
+                                            </div>
                                             @endif
                                         @endif
 
@@ -203,27 +213,44 @@
                                                 enctype="multipart/form-data" style="display:inline-block">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm delete">
-                                                    <i class="fas fa-trash">
-                                                    </i>
+                                               
                                                     @if ($shipping_rate->trashed())
-                                                        {{ __('Delete') }}
+                                                    <div class="col-md-6">
+                                                    <button type="submit" class="btn btn-danger btn-sm delete "data-toggle="tooltip" data-placement="top" title="{{ __('Delete') }}">
+                                                        <i class="fas fa-trash">
+                                                        </i>
+                                                    </button>
+                                                    </div>
                                                     @else
-                                                        {{ __('Trash') }}
+                                                    <div class="col-md-6">
+                                                    <button type="submit" class="btn btn-danger btn-sm delete "data-toggle="tooltip" data-placement="top" title="{{ __('Trash') }}">
+                                                        <i class="fas fa-trash">
+                                                        </i>
+                                                    </button>
+                                                    </div>
                                                     @endif
-                                                </button>
+                                                
                                             </form>
                                         @else
-                                            <button class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash">
-                                                </i>
+                                            
                                                 @if ($shipping_rate->trashed())
-                                                    {{ __('Delete') }}
+                                                <div class="col-md-6">
+                                                <button class="btn btn-danger btn-sm "data-toggle="tooltip" data-placement="top" title="{{ __('Delete') }}">
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                </button>
+                                                </div>
                                                 @else
-                                                    {{ __('Trash') }}
+                                                <div class="col-md-6">
+                                                <button class="btn btn-danger btn-sm "data-toggle="tooltip" data-placement="top" title="{{ __('Trash') }}">
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                </button>
+                                                </div>
                                                 @endif
-                                            </button>
+                                            
                                         @endif
+                                    </div>
 
 
                                     </td>
