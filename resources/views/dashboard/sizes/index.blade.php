@@ -139,36 +139,47 @@
                                         </td>
                                     @endif
                                     <td class="project-actions">
+                                        <div class="row">
+
 
                                         @if (!$size->trashed())
                                             @if (auth()->user()->hasPermission('sizes-update'))
-                                                <a class="btn btn-info btn-sm"
+                                            <div class="col-md-6">
+
+                                                <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title=" {{ __('Edit') }}"
                                                     href="{{ route('sizes.edit', ['lang' => app()->getLocale(), 'size' => $size->id]) }}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    {{ __('Edit') }}
+                                                   
                                                 </a>
+                                            </div>
                                             @else
-                                                <a class="btn btn-info btn-sm" href="#" aria-disabled="true">
+                                            <div class="col-md-6">
+                                                <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Edit') }}" href="#" aria-disabled="true">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    {{ __('Edit') }}
+                                                    
                                                 </a>
+                                            </div>
                                             @endif
                                         @else
                                             @if (auth()->user()->hasPermission('sizes-restore'))
-                                                <a class="btn btn-info btn-sm"
+                                            <div class="col-md-6">
+                                                <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Restore') }}"
                                                     href="{{ route('sizes.restore', ['lang' => app()->getLocale(), 'size' => $size->id]) }}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    {{ __('Restore') }}
+                                                    
                                                 </a>
+                                            </div>
                                             @else
-                                                <a class="btn btn-info btn-sm" href="#" aria-disabled="true">
+                                            <div class="col-md-6">
+                                                <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title=" {{ __('Restore') }}" href="#" aria-disabled="true">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    {{ __('Restore') }}
+                                                   
                                                 </a>
+                                            </div>
                                             @endif
                                         @endif
 
@@ -179,30 +190,52 @@
                                                 enctype="multipart/form-data" style="display:inline-block">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm delete">
+                                            
+                                                    @if ($size->trashed())
+
+                                                    <div class="col-md-6">
+                                                      
+                                                <button type="submit" class="btn btn-danger btn-sm delete"data-toggle="tooltip" data-placement="top" title=" {{ __('Delete') }}" >
                                                     <i class="fas fa-trash">
                                                     </i>
-                                                    @if ($size->trashed())
-                                                        {{ __('Delete') }}
-                                                    @else
-                                                        {{ __('Trash') }}
-                                                    @endif
                                                 </button>
+                                                    </div>
+                                                
+                                                    @else
+                                                    <div class="col-md-6">
+                                                <button type="submit" class="btn btn-danger btn-sm delete"data-toggle="tooltip" data-placement="top" title=" {{ __('Trash') }}" >
+                                                        <i class="fas fa-trash">
+                                                        </i>
+                                                </button>
+                                                    </div>
+                                                    @endif
+                                                
                                             </form>
                                         @else
-                                            <button class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash">
-                                                </i>
+                                            
                                                 @if ($size->trashed())
-                                                    {{ __('Delete') }}
+                                                <div class="col-md-6">
+                                                <button class="btn btn-danger btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Delete') }}" >
+                                                    <i class="fas fa-trash">
+                                                    </i> 
+                                                </button>
+                                                </div>
                                                 @else
-                                                    {{ __('Trash') }}
+                                                <div class="col-md-6">
+                                                <button class="btn btn-danger btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Trash') }}" >
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                </button>
+                                                </div>
+                                                    
                                                 @endif
-                                            </button>
+                                            
                                         @endif
+                                    </div>
 
 
                                     </td>
+
                             </tr>
                 @endforeach
 

@@ -257,117 +257,162 @@
                                         @endif
                                     </td>
                                     <td class="project-actions">
+                                        <div class="row">
 
                                         @if (!$user->trashed())
                                             @if (auth()->user()->hasPermission('homeworks_monitor-read'))
                                                 @if ($user->hasRole('administrator'))
-                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                                <div class="col-md-3">
+                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"data-toggle="tooltip" data-placement="top" title=" {{ __('Permissions') }}"
                                                         data-target="#modal-primary-{{ $user->id }}">
-                                                        {{ __('Permissions') }}
+                                                       
                                                     </button>
+                                                </div>
                                                 @endif
                                             @endif
 
 
                                             {{-- @if (auth()->user()->hasPermission('wallet-read'))
                             @if (!$user->hasRole('administrator'))
-                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-info-{{$user->id}}">
-                                    {{__('Add Wallet Balance')}}
+                            <div class="col-md-3">
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"data-toggle="tooltip" data-placement="top" title=" {{__('Add Wallet Balance')}}" 
+                                data-target="#modal-info-{{$user->id}}">
+                                   
                                 </button>
+                            </div>
                             @endif
                         @endif --}}
 
 
 
                                             @if (auth()->user()->hasPermission('users-read'))
-                                                <a class="btn btn-primary btn-sm"
+                                            <div class="col-md-3">
+                                                <a class="btn btn-primary btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('View') }}"
                                                     href="{{ route('users.show', [app()->getLocale(), $user->id]) }}">
                                                     <i class="fas fa-folder">
                                                     </i>
-                                                    {{ __('View') }}
+                                                    
                                                 </a>
+                                            </div>
                                             @else
-                                                <a class="btn btn-primary btn-sm" href="#" aria-disabled="true">
+                                            <div class="col-md-3">
+                                                <a class="btn btn-primary btn-sm"data-toggle="tooltip" data-placement="top" title=" {{ __('View') }}"
+                                                 href="#" aria-disabled="true">
                                                     <i class="fas fa-folder">
                                                     </i>
-                                                    {{ __('View') }}
+                                                   
                                                 </a>
+                                            </div>
                                             @endif
                                             @if (auth()->user()->hasPermission('users-update'))
-                                                <a class="btn btn-info btn-sm"
+                                            <div class="col-md-3">
+                                                <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Edit') }}"
                                                     href="{{ route('users.edit', ['lang' => app()->getLocale(), 'user' => $user->id]) }}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    {{ __('Edit') }}
+                                                    
                                                 </a>
+                                            </div>
                                             @else
-                                                <a class="btn btn-info btn-sm" href="#" aria-disabled="true">
+                                            <div class="col-md-3">
+                                                <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Edit') }}" 
+                                                href="#" aria-disabled="true">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    {{ __('Edit') }}
+                                                    
                                                 </a>
+                                            </div>
                                             @endif
                                             @if (auth()->user()->hasPermission('users-update') && $user->status !== 'blocked')
                                                 @if ($user->hasVerifiedPhone())
-                                                    <a class="btn btn-info btn-sm"
+                                                <div class="col-md-3">
+                                                    <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Deactivate') }}"
                                                         href="{{ route('users.deactivate', ['lang' => app()->getLocale(), 'user' => $user->id]) }}">
-                                                        {{ __('Deactivate') }}
+                                                        <i class="fas fa-pencil-alt">
+                                                        </i>
                                                     </a>
+                                                </div>
                                                 @else
-                                                    <a class="btn btn-info btn-sm"
+                                                <div class="col-md-3">
+                                                    <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Activate') }}"
                                                         href="{{ route('users.activate', ['lang' => app()->getLocale(), 'user' => $user->id]) }}">
-                                                        {{ __('Activate') }}
+                                                        <i class=" fas fa-solid fa-file-slash"></i>
                                                     </a>
+                                                </div>
                                                 @endif
                                             @elseif(!auth()->user()->hasPermission('users-update') && $user->status !== 'blocked')
                                                 @if ($user->hasVerifiedPhone())
-                                                    <a class="btn btn-info btn-sm" href="#">
-                                                        {{ __('Deactivate') }}
+                                                <div class="col-md-3">
+                                                    <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title=" {{ __('Deactivate') }}" 
+                                                    href="#">
+                                                    
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>
                                                     </a>
+                                                </div>
                                                 @else
-                                                    <a class="btn btn-info btn-sm" href="#">
-                                                        {{ __('Activate') }}
+                                                <div class="col-md-3">
+    
+                                                     <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="{{ __('Activate') }}"
+                                                     href="#">
+                                                     <i class=" fas fa-solid fa-file-slash"></i>
                                                     </a>
+                                                </div>
                                                 @endif
                                             @endif
 
                                             @if (auth()->user()->hasPermission('users-update'))
                                                 @if ($user->status == 'active')
-                                                    <a class="btn btn-info btn-sm"
+                                                <div class="col-md-3">
+                                                    <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title=" {{ __('Block') }}"
                                                         href="{{ route('users.block', ['lang' => app()->getLocale(), 'user' => $user->id]) }}">
-                                                        {{ __('Block') }}
+                                                        <i class=" fas fa-solid fa-ban"></i>
                                                     </a>
+                                                </div> 
                                                 @else
-                                                    <a class="btn btn-info btn-sm"
+                                                <div class="col-md-3">
+                                                    <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Unblock') }}"
                                                         href="{{ route('users.activate', ['lang' => app()->getLocale(), 'user' => $user->id]) }}">
-                                                        {{ __('Unblock') }}
+                                                        
                                                     </a>
+                                                </div>
                                                 @endif
                                             @else
                                                 @if ($user->status == 'active')
-                                                    <a class="btn btn-info btn-sm" href="#">
-                                                        {{ __('Block') }}
+                                                <div class="col-md-3">
+                                                    <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Block') }}"
+                                                     href="#">
+                                                        
                                                     </a>
+                                                </div>
                                                 @else
-                                                    <a class="btn btn-info btn-sm" href="#">
-                                                        {{ __('Unblock') }}
+                                                <div class="col-md-3">
+                                                    <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title=" {{ __('Unblock') }}"
+                                                     href="#">
+                                                       
                                                     </a>
+                                                </div>
                                                 @endif
                                             @endif
                                         @else
                                             @if (auth()->user()->hasPermission('users-restore'))
-                                                <a class="btn btn-info btn-sm"
+                                            <div class="col-md-3">
+                                                <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Restore') }}"
                                                     href="{{ route('users.restore', ['lang' => app()->getLocale(), 'user' => $user->id]) }}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    {{ __('Restore') }}
+                                                    
                                                 </a>
+                                            </div>
                                             @else
-                                                <a class="btn btn-info btn-sm" href="#" aria-disabled="true">
+                                            <div class="col-md-3">
+                                                <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title=" {{ __('Restore') }}"
+                                                 href="#" aria-disabled="true">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    {{ __('Restore') }}
+                                                   
                                                 </a>
+                                            </div>
                                             @endif
                                         @endif
 
@@ -378,31 +423,50 @@
                                                 enctype="multipart/form-data" style="display:inline-block">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm delete">
-                                                    <i class="fas fa-trash">
-                                                    </i>
+
+                                               
                                                     @if ($user->trashed())
-                                                        {{ __('Delete') }}
+                                                    <div class="col-md-3">
+                                                    <button type="submit" class="btn btn-danger btn-sm delete" data-toggle="tooltip" data-placement="top" title="  {{ __('Delete') }}">
+                                                        <i class="fas fa-trash">
+                                                        </i>
+                                                    </button>
+                                                    </div>
                                                     @else
-                                                        {{ __('Trash') }}
+                                                    <div class="col-md-3">
+                                                    <button type="submit" class="btn btn-danger btn-sm delete" data-toggle="tooltip" data-placement="top" title="   {{ __('Trash') }}">
+                                                        <i class="fas fa-trash">
+                                                        </i>
+                                                    </button>
+                                                    </div>
+                                                       
                                                     @endif
-                                                </button>
+                                               
                                             </form>
                                         @else
-                                            <button class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash">
-                                                </i>
+                                           
                                                 @if ($user->trashed())
-                                                    {{ __('Delete') }}
+                                                <div class="col-md-3">
+                                                <button class="btn btn-danger btn-sm"data-toggle="tooltip" data-placement="top" title="  {{ __('Delete') }}" >
+                                                    <i class="fas fa-trash">
+                                                    </i> 
+                                                </button>
+                                                </div>
                                                 @else
-                                                    {{ __('Trash') }}
+                                                <div class="col-md-3">
+                                                <button class="btn btn-danger btn-sm"data-toggle="tooltip" data-placement="top" title="   {{ __('Trash') }}" >
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                </button>
+                                                </div>
+                                                   
                                                 @endif
-                                            </button>
+                                            
                                         @endif
 
 
 
-
+                                    </div>            
 
                                     </td>
                             </tr>

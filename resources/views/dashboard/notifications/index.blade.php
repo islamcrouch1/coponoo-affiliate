@@ -129,10 +129,8 @@
 
                                     <td>
                                         <small>
-                                            <a class="btn btn-info btn-sm" href="{{ $notification->url }}">
-                                                <i class="fas fa-show">
-                                                </i>
-                                                {{ __('Show') }}
+                                            <a class="btn btn-info btn-sm  data-toggle="tooltip" data-placement="top" title="{{ __('Show') }}" href="{{ $notification->url }}">
+                                                <i class="fas fa-solid fa-tv"></i>
                                             </a>
                                         </small>
                                     </td>
