@@ -307,11 +307,13 @@
 
 
                                                     @if ($order->status == 'Waiting for the order amount to be released')
-                                                        <button type="button" class="btn btn-primary btn-sm"
-                                                            data-toggle="modal"
+                                                    <div class="col-md-6">
+                                                        <button type="button" class="btn btn-primary btn-sm order-i"
+                                                            data-toggle="modal"data-toggle="tooltip" data-placement="top" title="{{ __('Change Request Status') }}"
                                                             data-target="#modal-primary-{{ $order->id }}">
-                                                            {{ __('Change Request Status') }}
+                                                            <i class=" fas fa-solid fa-highlighter"></i>
                                                         </button>
+                                                    </div>
                                                     @endif
 
 
