@@ -250,42 +250,59 @@
 
 
                                             <td class="project-actions">
+                                                <div class="row">
+                                                <div class="col-md-3">
 
-                                                <a style="color:#ffffff" class="btn btn-primary btn-sm"
+
+                                                <a style="color:#ffffff" class="btn btn-primary btn-sm"data-toggle="tooltip" data-placement="top" title=" {{ __('Order Display') }}"
                                                     href="{{ route('orders.order.show', ['lang' => app()->getLocale(), 'order' => $order->id]) }}">
-                                                    {{ __('Order Display') }}
+                                                   
 
                                                 </a>
+                                                </div>
+
 
                                                 @if ($order->status == 'pending')
-                                                    <a class="btn btn-danger btn-sm"
+                                                <div class="col-md-3">
+
+                                                    <a class="btn btn-danger btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Cancel') }}"
                                                         href="{{ route('orders.affiliate.cancel', ['lang' => app()->getLocale(), 'order' => $order->id]) }}">
-                                                        {{ __('Cancel') }}
+                                                        
                                                     </a>
+                                                </div>
+
                                                 @endif
 
 
 
                                                 @if ($order->status != 'canceled' && $order->status != 'returned' && $order->status != 'pending' && $order->refund == null)
-                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                                <div class="col-md-3">
+                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"data-toggle="tooltip" data-placement="top" title=" {{ __('return request') }}"
                                                         data-target="#modal-primary-{{ $order->id }}">
-                                                        {{ __('return request') }}
+                                                       
                                                     </button>
+                                                </div>
                                                 @endif
 
 
 
                                                 @if ($order->refund != null && $order->refund->status == 1)
-                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                                <div class="col-md-3">
+                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"data-toggle="tooltip" data-placement="top" title="{{ __('Reason for refuse refund request') }}"
                                                         data-target="#modal-primaryy-{{ $order->id }}">
-                                                        {{ __('Reason for refuse refund request') }}
+                                                        
                                                     </button>
+                                                </div>
                                                 @endif
+                                                <div class="col-md-3">
 
-                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"data-toggle="tooltip" data-placement="top" title="{{ __('Notes') }}"
                                                     data-target="#modal-danger-{{ $order->id }}">
-                                                    {{ __('Notes') }}
+                                                    
                                                 </button>
+                                                </div> 
+                                            </div>
+                                                
 
 
 

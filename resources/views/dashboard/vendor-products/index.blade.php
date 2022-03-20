@@ -250,35 +250,44 @@
                                     @endif
 
                                     <td class="project-actions">
+                                        <div class="row">
 
                                         @if ($product->status == 'pending')
                                             @if (!$product->trashed())
                                                 @if (auth()->user()->HasRole('vendor'))
-                                                    <a class="btn btn-info btn-sm"
+                                                <div class="col-md-4">
+                                                    <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title=" {{ __('Edit') }}"
                                                         href="{{ route('vendor-products.edit', ['lang' => app()->getLocale(), 'vendor_product' => $product->id]) }}">
                                                         <i class="fas fa-pencil-alt">
                                                         </i>
-                                                        {{ __('Edit') }}
+                                                       
                                                     </a>
+                                                </div>
+                                                <div class="col-md-4">
 
-                                                    <a class="btn btn-info btn-sm"
+                                                    <a class="btn btn-info btn-sm"data-toggle="{{ __('Add color') }}"
                                                         href="{{ route('vendor-products.color', ['lang' => app()->getLocale(), 'product' => $product->id]) }}">
                                                         <i class="fas fa-color">
                                                         </i>
-                                                        {{ __('Add color') }}
+                                                        
                                                     </a>
+                                                </div>
                                                 @else
-                                                    <a class="btn btn-info btn-sm" href="#" aria-disabled="true">
+                                                <div class="col-md-4">
+                                                    <a class="btn btn-info btn-sm" href="#" aria-disabled="true"data-toggle="tooltip" data-placement="top" title="{{ __('Edit') }}">
                                                         <i class="fas fa-pencil-alt">
                                                         </i>
-                                                        {{ __('Edit') }}
+                                                        
                                                     </a>
+                                                </div>
+                                                <div class="col-md-4">
 
-                                                    <a class="btn btn-info btn-sm" href="#" aria-disabled="true">
+                                                    <a class="btn btn-info btn-sm" href="#" aria-disabled="true"data-toggle="tooltip" data-placement="top" title=" {{ __('Add color') }}">
                                                         <i class="fas fa-color">
                                                         </i>
-                                                        {{ __('Add color') }}
+                                                       
                                                     </a>
+                                                </div> 
                                                 @endif
                                             @endif
 
@@ -288,28 +297,45 @@
                                                     enctype="multipart/form-data" style="display:inline-block">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm delete">
-                                                        <i class="fas fa-trash">
-                                                        </i>
+                                                   
                                                         @if ($product->trashed())
-                                                            {{ __('Delete') }}
+                                                        <div class="col-md-4">
+                                                        <button type="submit" class="btn btn-danger btn-sm delete"data-toggle="tooltip" data-placement="top" title="{{ __('Delete') }}">
+                                                            <i class="fas fa-trash">
+                                                            </i> 
+                                                        </button>
+                                                        </div>
                                                         @else
-                                                            {{ __('Delete') }}
+                                                        <div class="col-md-4">
+                                                        <button type="submit" class="btn btn-danger btn-sm delete"data-toggle="tooltip" data-placement="top" title="{{ __('Trash') }}">
+                                                            <i class="fas fa-trash">
+                                                            </i>
+                                                        </button>
+                                                        </div>
                                                         @endif
-                                                    </button>
+                                                   
                                                 </form>
                                             @else
-                                                <button class="btn btn-danger btn-sm">
-                                                    <i class="fas fa-trash">
-                                                    </i>
+                                            
                                                     @if ($product->trashed())
-                                                        {{ __('Delete') }}
+                                                    <div class="col-md-4">
+                                                    <button class="btn btn-danger btn-sm"data-toggle="tooltip" data-placement="top" title="  {{ __('Delete') }}" >
+                                                        <i class="fas fa-trash">
+                                                        </i>
+                                                    </button>
+                                                    </div>
                                                     @else
-                                                        {{ __('Trash') }}
+                                                    <div class="col-md-4">
+                                                    <button class="btn btn-danger btn-sm"data-toggle="tooltip" data-placement="top" title="  {{ __('Trash') }}" >
+                                                        <i class="fas fa-trash">
+                                                        </i> 
+                                                    </button>
+                                                    </div>
                                                     @endif
-                                                </button>
+                                                
                                             @endif
                                         @endif
+                                    </div>
 
                                     </td>
                             </tr>

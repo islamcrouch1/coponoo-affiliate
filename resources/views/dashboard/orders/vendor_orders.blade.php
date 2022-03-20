@@ -213,11 +213,15 @@
 
 
                                             <td class="project-actions">
+                                                <div class="row">
+                                                    <div class="col-md-12">
 
-                                                <a style="color:#ffffff" class="btn btn-primary btn-sm"
+                                                <a style="color:#ffffff" class="btn btn-primary btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Order Display') }}"
                                                     href="{{ route('vendor.order.show', ['lang' => app()->getLocale(), 'order' => $order->id]) }}">
-                                                    {{ __('Order Display') }}
+                                                    
                                                 </a>
+                                                    </div>
+                                                </div>
 
 
 
