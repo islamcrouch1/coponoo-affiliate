@@ -138,23 +138,29 @@
 
 
                                         <td class="project-actions">
+                                            <div class="row">
 
                                             @if (!$message->trashed())
                                                 @if (auth()->user()->hasPermission('messages-read'))
-                                                    <a class="btn btn-info btn-sm"
+                                                <div class="col-md-12">
+                                                    <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Reply') }}"
                                                         href="{{ route('users.show', ['lang' => app()->getLocale(), 'user' => $message->user_id]) }}">
                                                         <i class="fas fa-pencil-alt">
                                                         </i>
-                                                        {{ __('Reply') }}
+                                                        
                                                     </a>
+                                                </div>
                                                 @else
-                                                    <a class="btn btn-info btn-sm" href="#" aria-disabled="true">
+                                                <div class="col-md-12">
+                                                    <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Reply') }}" href="#" aria-disabled="true">
                                                         <i class="fas fa-pencil-alt">
                                                         </i>
-                                                        {{ __('Reply') }}
+                                                        
                                                     </a>
+                                                </div>
                                                 @endif
                                             @endif
+                                        </div>
 
 
 

@@ -416,13 +416,13 @@
 
                                                     @if ($order->status != 'canceled' && $order->status != 'returned' && $order->status != 'RTO')
                                                     <div class="col-md-6">
-                                                        <button type="button" class="btn btn-primary btn-sm order-i"
+                                                        <button  type="button" class="btn btn-primary btn-sm order-i"
                                                             data-toggle="modal"
                                                             data-target="#modal-primary-{{ $order->id }}"
                                                             data-toggle="tooltip" data-placement="top"
                                                             title=" {{ __('Change Request Status') }}">
-                                                            <i style="color:#ffffff">
-                                                                class=" fas fa-solid fa-calendar-check"></i>
+                                                            
+                                                            <i class=" fas fa-solid fa-calendar-check"></i>
                                                         </button>
                                                         </div>
                                                     @endif

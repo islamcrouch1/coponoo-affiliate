@@ -156,36 +156,45 @@
                                         </td>
                                     @endif
                                     <td class="project-actions">
+                                        <div class="row">
 
                                         @if (!$role->trashed())
                                             @if (auth()->user()->hasPermission('roles-update'))
-                                                <a class="btn btn-info btn-sm"
+                                            <div class="col-md-12">
+                                                <a class="btn btn-info btn-lg " data-toggle="tooltip" data-placement="top" title="{{ __('Edit') }}" 
                                                     href="{{ route('roles.edit', ['lang' => app()->getLocale(), 'role' => $role->id]) }}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    {{ __('Edit') }}
+                                                    
                                                 </a>
+                                            </div>
                                             @else
-                                                <a class="btn btn-info btn-sm" href="#" aria-disabled="true">
+                                            <div class="col-md-12">
+                                                <a class="btn btn-info btn-lg"data-toggle="tooltip" data-placement="top" title="{{ __('Edit') }}" href="#" aria-disabled="true">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    {{ __('Edit') }}
+                                                    
                                                 </a>
+                                            </div>
                                             @endif
                                         @else
                                             @if (auth()->user()->hasPermission('roles-restore'))
-                                                <a class="btn btn-info btn-sm"
+                                            <div class="col-md-12">
+                                                <a class="btn btn-info btn-lg"data-toggle="tooltip" data-placement="top" title="{{ __('Restore') }}"
                                                     href="{{ route('roles.restore', ['lang' => app()->getLocale(), 'role' => $role->id]) }}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    {{ __('Restore') }}
+                                                    
                                                 </a>
+                                            </div>
                                             @else
-                                                <a class="btn btn-info btn-sm" href="#" aria-disabled="true">
+                                            <div class="col-md-12">
+                                                <a class="btn btn-info btn-lg " data-toggle="tooltip" data-placement="top" title=" {{ __('Restore') }}" href="#" aria-disabled="true">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    {{ __('Restore') }}
+                                                   
                                                 </a>
+                                            </div>
                                             @endif
                                         @endif
 
@@ -196,27 +205,46 @@
                                                 enctype="multipart/form-data" style="display:inline-block">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm delete">
-                                                    <i class="fas fa-trash">
-                                                    </i>
+                                                
                                                     @if ($role->trashed())
-                                                        {{ __('Delete') }}
+                                                    <div class="col-md-12">
+                                                    <button type="submit" class="btn btn-danger btn-lg delete " data-toggle="tooltip" data-placement="top" title=" {{ __('Delete') }}">
+                                                        <i class="fas fa-trash">
+                                                        </i>
+                                                    </button>
+                                                    </div>
                                                     @else
-                                                        {{ __('Trash') }}
+                                                    <div class="col-md-12">
+                                                    <button type="submit" class="btn btn-danger btn-lg delete " data-toggle="tooltip" data-placement="top" title=" {{ __('Trash') }}">
+                                                        <i class="fas fa-trash">
+                                                        </i>
+                                                    </button>
+                                                    </div>
+
+                                                        
                                                     @endif
-                                                </button>
+                                               
                                             </form>
                                         @else
-                                            <button class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash">
-                                                </i>
+                                           
                                                 @if ($role->trashed())
-                                                    {{ __('Delete') }}
+                                                <div class="col-md-12">
+                                                <button class="btn btn-danger btn-lg "data-toggle="tooltip" data-placement="top" title="{{ __('Delete') }}" >
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                </button> 
+                                                </div>
                                                 @else
-                                                    {{ __('Trash') }}
+                                                <div class="col-md-12">
+                                                <button class="btn btn-danger btn-lg "data-toggle="tooltip" data-placement="top" title="{{ __('Trash') }}" >
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                </button>
+                                                </div>
                                                 @endif
-                                            </button>
+                                            
                                         @endif
+                                    </div>
 
 
                                     </td>
