@@ -218,7 +218,7 @@
 
                                                 <a style="color:#ffffff" class="btn btn-primary btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Order Display') }}"
                                                     href="{{ route('vendor.order.show', ['lang' => app()->getLocale(), 'order' => $order->id]) }}">
-                                                    
+                                                    <i class=" fas fa-solid fa-tv"></i>
                                                 </a>
                                                     </div>
                                                 </div>
