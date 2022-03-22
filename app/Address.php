@@ -16,7 +16,7 @@ class Address extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'province', 'city','country_id','phone','district','street','building','notes',
+        'user_id', 'province', 'city', 'country_id', 'phone', 'district', 'street', 'building', 'notes',
     ];
 
 
@@ -37,12 +37,11 @@ class Address extends Model
         return $this->hasMany(Order::class);
     }
 
-    public function scopeWhenSearch($query , $search)
+    public function scopeWhenSearch($query, $search)
     {
-        return $query->when($search , function($q) use($search) {
-            return $q->where('phone' , 'like' , "%$search%")
-            ->orWhere('city' , 'like' , "%$search%");
+        return $query->when($search, function ($q) use ($search) {
+            return $q->where('phone', 'like', "%$search%")
+                ->orWhere('city', 'like', "%$search%");
         });
     }
-
 }

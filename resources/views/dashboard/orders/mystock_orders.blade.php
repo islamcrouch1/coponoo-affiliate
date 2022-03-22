@@ -187,6 +187,11 @@
                                                     </a>
                                                 @endif
 
+                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                                    data-target="#modal-primary-{{ $order->id }}">
+                                                    {{ __('Order Details') }}
+                                                </button>
+
 
 
 
@@ -261,6 +266,67 @@
     </section>
     <!-- /.content -->
 
+
+
+
+
+
+    @foreach ($orders as $order)
+        <div style="direction: rtl" class="modal fade" id="modal-primary-{{ $order->id }}">
+            <div class="modal-dialog">
+                <div class="modal-content bg-primary">
+                    <div style="direction: ltr" class="modal-header">
+                        <h4 style="direction: rtl;" class="modal-title">
+                            {{ __('Order Details') }}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                    </div>
+
+                    <div class="modal-body">
+
+
+                        <table class="table table-striped projects">
+                            <thead>
+                                <tr>
+
+                                    <th>{{ __('Color') }}</th>
+                                    <th>{{ __('Size') }}</th>
+                                    <th>{{ __('Quantity') }}</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($order->astocks as $stock)
+                                    <tr>
+
+                                        <td>{{ $stock->color->color_ar }}</td>
+                                        <td>{{ $stock->size->size_ar }}</td>
+                                        <td>{{ $stock->stock }}</td>
+
+
+                                    </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-outline-light"
+                            data-dismiss="modal">{{ __('Close') }}</button>
+                    </div>
+                    </form>
+
+
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    @endforeach
 
 
 @endsection

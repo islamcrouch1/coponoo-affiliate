@@ -69,7 +69,8 @@
                                     <td>{{ $product->pivot->stock }}</td>
                                     <td>{{ $product->pivot->price }}</td>
                                     <td>{{ $product->pivot->price * $product->pivot->stock }}</td>
-                                    <td>{{ ($product->pivot->price - $product->min_price) * $product->pivot->stock }}</td>
+                                    <td>{{ ($product->pivot->price - $product->min_price) * $product->pivot->stock }}
+                                    </td>
                                     <td><a class="btn btn-sm btn-danger"
                                             href="{{ route('cart.remove', ['lang' => app()->getLocale(),'user' => $user->id,'product' => $product->id,'stock' => $product->pivot->stock_id]) }}">{{ __('Delete') }}</a>
                                     </td>
@@ -229,8 +230,7 @@
                                 <label for="notes" class="col-md-2 col-form-label">{{ __('notes') }}</label>
 
                                 <div class="col-md-10">
-                                    <textarea id="notes" type="text"
-                                        class="form-control @error('notes') is-invalid @enderror" name="notes"
+                                    <textarea id="notes" type="text" class="form-control @error('notes') is-invalid @enderror" name="notes"
                                         value="{{ old('notes') }}" autocomplete="notes"></textarea>
 
                                     @error('notes')
