@@ -250,59 +250,69 @@
 
 
                                             <td class="project-actions">
-                                                <div class="row">
-                                                <div class="col-md-3">
+                                                <div style="width:120px" class="row">
+                                                    <div class="col-md-6">
 
 
-                                                <a style="color:#ffffff" class="btn btn-primary btn-sm"data-toggle="tooltip" data-placement="top" title=" {{ __('Order Display') }}"
-                                                    href="{{ route('orders.order.show', ['lang' => app()->getLocale(), 'order' => $order->id]) }}">
-                                                    <i class="fas fa-solid fa-tv"></i>
+                                                        <a style="color:#ffffff" class="btn btn-primary btn-sm btnn order-i"
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title=" {{ __('Order Display') }}"
+                                                            href="{{ route('orders.order.show', ['lang' => app()->getLocale(), 'order' => $order->id]) }}">
+                                                            <i class="fas fa-solid fa-tv"></i>
 
-                                                </a>
+                                                        </a>
+                                                    </div>
+
+
+                                                    @if ($order->status == 'pending')
+                                                        <div class="col-md-6">
+
+                                                            <a class="btn btn-danger btn-sm btnn order-i"
+                                                                data-toggle="tooltip" data-placement="top"
+                                                                title="{{ __('Cancel') }}"
+                                                                href="{{ route('orders.affiliate.cancel', ['lang' => app()->getLocale(), 'order' => $order->id]) }}">
+                                                                <i class=" fas fa-solid fa-window-close"></i>
+                                                            </a>
+                                                        </div>
+                                                    @endif
+
+
+
+                                                    @if ($order->status != 'canceled' && $order->status != 'returned' && $order->status != 'pending' && $order->refund == null)
+                                                        <div class="col-md-6">
+                                                            <button type="button" class="btn btn-primary btn-sm"
+                                                                data-toggle="modal" data-toggle="tooltip"
+                                                                data-placement="top" title=" {{ __('return request') }}"
+                                                                data-target="#modal-primary-{{ $order->id }}">
+                                                                <i class=" fas fa-solid fa-arrow-right-arrow-left"></i>
+                                                            </button>
+                                                        </div>
+                                                    @endif
+
+
+
+                                                    @if ($order->refund != null && $order->refund->status == 1)
+                                                        <div class="col-md-6">
+                                                            <button type="button" class="btn btn-primary btn-sm"
+                                                                data-toggle="modal" data-toggle="tooltip"
+                                                                data-placement="top"
+                                                                title="{{ __('Reason for refuse refund request') }}"
+                                                                data-target="#modal-primaryy-{{ $order->id }}">
+                                                                <i class=" fas fa-solid fa-cloud-question"></i>
+                                                            </button>
+                                                        </div>
+                                                    @endif
+                                                    <div class="col-md-6">
+
+                                                        <button type="button" class="btn btn-primary btn-sm order-i"
+                                                            data-toggle="modal" data-toggle="tooltip" data-placement="top"
+                                                            title="{{ __('Notes') }}"
+                                                            data-target="#modal-danger-{{ $order->id }}">
+                                                            <i class="fas fa-solid fa-highlighter"></i>
+                                                        </button>
+                                                    </div>
                                                 </div>
 
-
-                                                @if ($order->status == 'pending')
-                                                <div class="col-md-3">
-
-                                                    <a class="btn btn-danger btn-sm"data-toggle="tooltip" data-placement="top" title="{{ __('Cancel') }}"
-                                                        href="{{ route('orders.affiliate.cancel', ['lang' => app()->getLocale(), 'order' => $order->id]) }}">
-                                                        <i class=" fas fa-solid fa-cloud-xmark"></i>
-                                                    </a>
-                                                </div>
-
-                                                @endif
-
-
-
-                                                @if ($order->status != 'canceled' && $order->status != 'returned' && $order->status != 'pending' && $order->refund == null)
-                                                <div class="col-md-3">
-                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"data-toggle="tooltip" data-placement="top" title=" {{ __('return request') }}"
-                                                        data-target="#modal-primary-{{ $order->id }}">
-                                                        <i class=" fas fa-solid fa-arrow-right-arrow-left"></i>
-                                                    </button>
-                                                </div>
-                                                @endif
-
-
-
-                                                @if ($order->refund != null && $order->refund->status == 1)
-                                                <div class="col-md-3">
-                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"data-toggle="tooltip" data-placement="top" title="{{ __('Reason for refuse refund request') }}"
-                                                        data-target="#modal-primaryy-{{ $order->id }}">
-                                                        <i class=" fas fa-solid fa-cloud-question"></i>
-                                                    </button>
-                                                </div>
-                                                @endif
-                                                <div class="col-md-3">
-
-                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"data-toggle="tooltip" data-placement="top" title="{{ __('Notes') }}"
-                                                    data-target="#modal-danger-{{ $order->id }}">
-                                                    <i class=" fas fa-solid fa-notes"></i>
-                                                </button>
-                                                </div> 
-                                            </div>
-                                                
 
 
 
