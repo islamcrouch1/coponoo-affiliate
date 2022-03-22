@@ -24,6 +24,12 @@ class Aorder extends Model
     }
 
 
+
+    public function astocks()
+    {
+        return $this->hasmany(Astock::class);
+    }
+
     public function scopeWhenSearch($query, $search)
     {
         return $query->when($search, function ($q) use ($search) {

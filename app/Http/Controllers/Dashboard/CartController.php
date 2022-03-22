@@ -32,7 +32,7 @@ class CartController extends Controller
             // review this condition  // if (($product1->pivot->price - $product1->min_price) * $product1->pivot->stock < 0)
 
 
-            if ($product1->pivot->vendor_price != $product1->vendor_price) {
+            if ($product1->pivot->vendor_price != $product1->vendor_price || $product1->stocks->find($product1->pivot->stock_id) == NULL) {
 
 
                 $user->cart->products()->wherePivot('stock_id', $product1->pivot->stock_id)->detach();

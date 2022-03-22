@@ -261,14 +261,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
 
-                                            @foreach ($orders as $order)
+                                        @foreach ($orders as $order)
+                                            <tr>
+
                                                 <td style="padding-bottom: 34px ;"><input class="form-check-input"
                                                         type="checkbox" value="{{ $order->id }}" class="cb-element"
                                                         name="checkAll[]"
                                                         style="margin-right: 11px;
-                                                                                                                                                margin-left: 11px">
+                                                                                                                                                                                    margin-left: 11px">
                                                 </td>
 
                                                 <td>{{ $order->id }}</td>
@@ -390,104 +391,89 @@
 
 
                                                 <td class="project-actions">
-                                                    <div class="row">
+                                                    <div style="width: 120px" class="row">
                                                         <div class="col-md-6">
 
-                                                    <a class="btn btn-info btn-sm order-i" data-toggle="tooltip"
-                                                        data-placement="top" title=" {{ __('Affiliate Info') }}"
-                                                        href="{{ route('users.show', [app()->getLocale(), $order->user->id]) }}">
-                                                        <i class=" fas fa-solid fa-user"></i>
-                                                     </a>
-                                                    </div>
-
-                                                    <div class="col-md-6">
-
-                                                    <a style="color:#ffffff" class="btn btn-secondary btn-sm order-i"
-                                                        data-toggle="tooltip" data-placement="top"
-                                                        title="  {{ __('Order Display') }}"
-                                                        href="{{ route('orders.order.show', ['lang' => app()->getLocale(), 'order' => $order->id]) }}">
-                                                        <i class="fas fa-solid fa-tv"></i>
-
-                                                    </a>
-                                                    </div>
-                                                    
-
-
-
-                                                    @if ($order->status != 'canceled' && $order->status != 'returned' && $order->status != 'RTO')
-                                                    <div class="col-md-6">
-                                                        <button  type="button" class="btn btn-primary btn-sm order-i"
-                                                            data-toggle="modal"
-                                                            data-target="#modal-primary-{{ $order->id }}"
-                                                            data-toggle="tooltip" data-placement="top"
-                                                            title=" {{ __('Change Request Status') }}">
-                                                            
-                                                            <i class=" fas fa-solid fa-calendar-check"></i>
-                                                        </button>
+                                                            <a class="btn btn-info btn-sm order-i" data-toggle="tooltip"
+                                                                data-placement="top" title=" {{ __('Affiliate Info') }}"
+                                                                href="{{ route('users.show', [app()->getLocale(), $order->user->id]) }}">
+                                                                <i class=" fas fa-solid fa-user"></i>
+                                                            </a>
                                                         </div>
-                                                    @endif
 
-                                                    @if (auth()->user()->hasPermission('onotes-read'))
-                                                    <div class="col-md-6">
-                                                        <button style="" type="button"
-                                                            class="btn btn-success btn-sm order-i" data-toggle="modal"
-                                                            data-target="#modal-danger-{{ $order->id }}"
-                                                            data-toggle="tooltip" data-placement="top"
-                                                            title="  {{ __('Notes') }}" data-toggle="modal">
-                                                            <i class=" fas fa-solid fa-highlighter"></i>
-                                                        </button>
-                                                    </div>
-                                                    @endif
+                                                        <div class="col-md-6">
 
+                                                            <a style="color:#ffffff"
+                                                                class="btn btn-secondary btn-sm order-i"
+                                                                data-toggle="tooltip" data-placement="top"
+                                                                title="  {{ __('Order Display') }}"
+                                                                href="{{ route('orders.order.show', ['lang' => app()->getLocale(), 'order' => $order->id]) }}">
+                                                                <i class="fas fa-solid fa-tv"></i>
 
-                                                    @if ($order->refund)
-                                                        <button type="button" class="btn btn-primary btn-sm"
-                                                            data-toggle="modal"
-                                                            data-target="#modal-primaryy-{{ $order->id }}">
-                                                            {{ __('reason for return request') }}
-                                                        </button>
-                                                    @endif
-
-
-                                                    @if ($order->status != 'canceled' && $order->status != 'returned' && $order->prefunds->count() != 0)
-                                                        <button type="button" class="btn btn-primary btn-sm"
-                                                            data-toggle="modal"
-                                                            data-target="#modal-primaryyy-{{ $order->id }}">
-                                                            {{ __('Partial refund requests') }}
-                                                        </button>
-                                                    @endif
+                                                            </a>
+                                                        </div>
 
 
 
 
+                                                        @if ($order->status != 'canceled' && $order->status != 'returned' && $order->status != 'RTO')
+                                                            <div class="col-md-6">
+                                                                <button type="button"
+                                                                    class="btn btn-primary btn-sm order-i"
+                                                                    data-toggle="modal"
+                                                                    data-target="#modal-primary-{{ $order->id }}"
+                                                                    data-toggle="tooltip" data-placement="top"
+                                                                    title=" {{ __('Change Request Status') }}">
+
+                                                                    <i class=" fas fa-solid fa-calendar-check"></i>
+                                                                </button>
+                                                            </div>
+                                                        @endif
+
+                                                        @if (auth()->user()->hasPermission('onotes-read'))
+                                                            <div class="col-md-6">
+                                                                <button style="" type="button"
+                                                                    class="btn btn-success btn-sm order-i"
+                                                                    data-toggle="modal"
+                                                                    data-target="#modal-danger-{{ $order->id }}"
+                                                                    data-toggle="tooltip" data-placement="top"
+                                                                    title="  {{ __('Notes') }}" data-toggle="modal">
+                                                                    <i class=" fas fa-solid fa-highlighter"></i>
+                                                                </button>
+                                                            </div>
+                                                        @endif
 
 
-                                                    {{-- @if ($order->status != 'canceled' || $order->status != 'returned')
+                                                        @if ($order->refund)
+                                                            <button type="button" class="btn btn-primary btn-sm"
+                                                                data-toggle="modal"
+                                                                data-target="#modal-primaryy-{{ $order->id }}">
+                                                                {{ __('reason for return request') }}
+                                                            </button>
+                                                        @endif
 
-                                    @if (auth()->user()->hasPermission('all_orders-update'))
-                                        <a class="btn btn-info btn-sm" href="{{route('orders.edit' , ['lang'=>app()->getLocale() , 'order'=>$order->id , 'user'=>$order->user->id])}}">
-                                            <i class="fas fa-pencil-alt">
-                                            </i>
-                                           {{__('Edit')}}
-                                        </a>
-                                    @else
-                                        <a class="btn btn-info btn-sm" href="#" aria-disabled="true">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                       {{__('Edit')}}
-                                        </a>
-                                    @endif
 
-                                @endif --}}
+                                                        @if ($order->status != 'canceled' && $order->status != 'returned' && $order->prefunds->count() != 0)
+                                                            <button type="button" class="btn btn-primary btn-sm"
+                                                                data-toggle="modal"
+                                                                data-target="#modal-primaryyy-{{ $order->id }}">
+                                                                {{ __('Partial refund requests') }}
+                                                            </button>
+                                                        @endif
+
+
+
+
+
+
 
                                                 </td>
-                                            </div>
-                                        </tr>
-                            @endforeach
+                                            </tr>
+                                        @endforeach
 
 
-                            </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
                         </form>
 
                         <div class="row mt-3"> {{ $orders->appends(request()->query())->links() }}</div>

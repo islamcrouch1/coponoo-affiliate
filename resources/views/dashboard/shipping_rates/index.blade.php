@@ -118,9 +118,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
 
-                                @foreach ($shipping_rates->reverse() as $shipping_rate)
+                            @foreach ($shipping_rates->reverse() as $shipping_rate)
+                                <tr>
+
                                     <td>
                                         {{ $shipping_rate->id }}
                                     </td>
@@ -163,107 +164,117 @@
                                         </td>
                                     @endif
                                     <td class="project-actions">
-                                        <div class="row">
-                                           
+                                        <div style="width:120px" class="row">
 
-                                        @if (!$shipping_rate->trashed())
-                                            @if (auth()->user()->hasPermission('shipping_rates-update'))
-                                            <div class="col-md-6">
-                                                <a class="btn btn-info btn-sm "data-toggle="tooltip" data-placement="top" title="{{ __('Edit') }}"
-                                                    href="{{ route('shipping_rates.edit', ['lang' => app()->getLocale(), 'shipping_rate' => $shipping_rate->id]) }}">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>
-                                                   
-                                                </a>
-                                            </div>
-                                            @else
-                                            <div class="col-md-6">
-                                                <a class="btn btn-info btn-sm "data-toggle="tooltip" data-placement="top" title="{{ __('Edit') }}" href="#" aria-disabled="true">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>
-                                                    
-                                                </a>
-                                            </div>
-                                            @endif
-                                        @else
-                                            @if (auth()->user()->hasPermission('shipping_rates-restore'))
-                                            <div class="col-md-6">
-                                                <a class="btn btn-info btn-sm "data-toggle="tooltip" data-placement="top" title="{{ __('Restore') }}"
-                                                    href="{{ route('shipping_rates.restore', ['lang' => app()->getLocale(), 'shipping_rate' => $shipping_rate->id]) }}">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>
-                                                    
-                                                </a>
-                                            </div>
-                                            @else
-                                            <div class="col-md-6">
-                                                <a class="btn btn-info btn-sm " data-toggle="tooltip" data-placement="top" title=" {{ __('Restore') }}"href="#" aria-disabled="true">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>
-                                                   
-                                                </a>
-                                            </div>
-                                            @endif
-                                        @endif
 
-                                        @if (auth()->user()->hasPermission('shipping_rates-delete') |
-    auth()->user()->hasPermission('shipping_rates-trash'))
-                                            <form method="POST"
-                                                action="{{ route('shipping_rates.destroy', ['lang' => app()->getLocale(), 'shipping_rate' => $shipping_rate->id]) }}"
-                                                enctype="multipart/form-data" style="display:inline-block">
-                                                @csrf
-                                                @method('DELETE')
-                                               
-                                                    @if ($shipping_rate->trashed())
+                                            @if (!$shipping_rate->trashed())
+                                                @if (auth()->user()->hasPermission('shipping_rates-update'))
                                                     <div class="col-md-6">
-                                                    <button type="submit" class="btn btn-danger btn-sm delete "data-toggle="tooltip" data-placement="top" title="{{ __('Delete') }}">
-                                                        <i class="fas fa-trash">
-                                                        </i>
-                                                    </button>
+                                                        <a class="btn btn-info btn-sm " data-toggle="tooltip"
+                                                            data-placement="top" title="{{ __('Edit') }}"
+                                                            href="{{ route('shipping_rates.edit', ['lang' => app()->getLocale(), 'shipping_rate' => $shipping_rate->id]) }}">
+                                                            <i class="fas fa-pencil-alt">
+                                                            </i>
+
+                                                        </a>
                                                     </div>
-                                                    @else
-                                                    <div class="col-md-6">
-                                                    <button type="submit" class="btn btn-danger btn-sm delete "data-toggle="tooltip" data-placement="top" title="{{ __('Trash') }}">
-                                                        <i class="fas fa-trash">
-                                                        </i>
-                                                    </button>
-                                                    </div>
-                                                    @endif
-                                                
-                                            </form>
-                                        @else
-                                            
-                                                @if ($shipping_rate->trashed())
-                                                <div class="col-md-6">
-                                                <button class="btn btn-danger btn-sm "data-toggle="tooltip" data-placement="top" title="{{ __('Delete') }}">
-                                                    <i class="fas fa-trash">
-                                                    </i>
-                                                </button>
-                                                </div>
                                                 @else
-                                                <div class="col-md-6">
-                                                <button class="btn btn-danger btn-sm "data-toggle="tooltip" data-placement="top" title="{{ __('Trash') }}">
-                                                    <i class="fas fa-trash">
-                                                    </i>
-                                                </button>
-                                                </div>
+                                                    <div class="col-md-6">
+                                                        <a class="btn btn-info btn-sm " data-toggle="tooltip"
+                                                            data-placement="top" title="{{ __('Edit') }}" href="#"
+                                                            aria-disabled="true">
+                                                            <i class="fas fa-pencil-alt">
+                                                            </i>
+
+                                                        </a>
+                                                    </div>
                                                 @endif
-                                            
-                                        @endif
-                                    </div>
+                                            @else
+                                                @if (auth()->user()->hasPermission('shipping_rates-restore'))
+                                                    <div class="col-md-6">
+                                                        <a class="btn btn-info btn-sm " data-toggle="tooltip"
+                                                            data-placement="top" title="{{ __('Restore') }}"
+                                                            href="{{ route('shipping_rates.restore', ['lang' => app()->getLocale(), 'shipping_rate' => $shipping_rate->id]) }}">
+                                                            <i class="fas fa-pencil-alt">
+                                                            </i>
+
+                                                        </a>
+                                                    </div>
+                                                @else
+                                                    <div class="col-md-6">
+                                                        <a class="btn btn-info btn-sm " data-toggle="tooltip"
+                                                            data-placement="top" title=" {{ __('Restore') }}" href="#"
+                                                            aria-disabled="true">
+                                                            <i class="fas fa-pencil-alt">
+                                                            </i>
+
+                                                        </a>
+                                                    </div>
+                                                @endif
+                                            @endif
+
+                                            @if (auth()->user()->hasPermission('shipping_rates-delete') |
+    auth()->user()->hasPermission('shipping_rates-trash'))
+                                                <form method="POST"
+                                                    action="{{ route('shipping_rates.destroy', ['lang' => app()->getLocale(), 'shipping_rate' => $shipping_rate->id]) }}"
+                                                    enctype="multipart/form-data" style="display:inline-block">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    @if ($shipping_rate->trashed())
+                                                        <div class="col-md-6">
+                                                            <button type="submit" class="btn btn-danger btn-sm delete "
+                                                                data-toggle="tooltip" data-placement="top"
+                                                                title="{{ __('Delete') }}">
+                                                                <i class="fas fa-trash">
+                                                                </i>
+                                                            </button>
+                                                        </div>
+                                                    @else
+                                                        <div class="col-md-6">
+                                                            <button type="submit" class="btn btn-danger btn-sm delete "
+                                                                data-toggle="tooltip" data-placement="top"
+                                                                title="{{ __('Trash') }}">
+                                                                <i class="fas fa-trash">
+                                                                </i>
+                                                            </button>
+                                                        </div>
+                                                    @endif
+
+                                                </form>
+                                            @else
+                                                @if ($shipping_rate->trashed())
+                                                    <div class="col-md-6">
+                                                        <button class="btn btn-danger btn-sm " data-toggle="tooltip"
+                                                            data-placement="top" title="{{ __('Delete') }}">
+                                                            <i class="fas fa-trash">
+                                                            </i>
+                                                        </button>
+                                                    </div>
+                                                @else
+                                                    <div class="col-md-6">
+                                                        <button class="btn btn-danger btn-sm " data-toggle="tooltip"
+                                                            data-placement="top" title="{{ __('Trash') }}">
+                                                            <i class="fas fa-trash">
+                                                            </i>
+                                                        </button>
+                                                    </div>
+                                                @endif
+                                            @endif
+                                        </div>
 
 
                                     </td>
-                            </tr>
-                @endforeach
+                                </tr>
+                            @endforeach
 
 
-                </tbody>
-                </table>
+                        </tbody>
+                    </table>
 
-                <div class="row mt-3"> {{ $shipping_rates->appends(request()->query())->links() }}</div>
-            @else
-                <h3 class="p-2">{{ __('No shipping rates To Show') }}</h3>
+                    <div class="row mt-3"> {{ $shipping_rates->appends(request()->query())->links() }}</div>
+                @else
+                    <h3 class="p-2">{{ __('No shipping rates To Show') }}</h3>
                 @endif
             </div>
             <!-- /.card-body -->

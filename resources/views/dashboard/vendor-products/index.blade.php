@@ -250,92 +250,102 @@
                                     @endif
 
                                     <td class="project-actions">
-                                        <div class="row">
+                                        <div style="width:120px" class="row">
 
-                                        @if ($product->status == 'pending')
-                                            @if (!$product->trashed())
+                                            @if ($product->status == 'pending')
+                                                @if (!$product->trashed())
+                                                    @if (auth()->user()->HasRole('vendor'))
+                                                        <div class="col-md-6">
+                                                            <a class="btn btn-info btn-sm btnn" data-toggle="tooltip"
+                                                                data-placement="top" title=" {{ __('Edit') }}"
+                                                                href="{{ route('vendor-products.edit', ['lang' => app()->getLocale(), 'vendor_product' => $product->id]) }}">
+                                                                <i class="fas fa-pencil-alt">
+                                                                </i>
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-md-6">
+
+                                                            <a class="btn btn-info btn-sm btnn" data-toggle="tooltip"
+                                                                data-placement="top" title="{{ __('Add color') }}"
+                                                                href="{{ route('vendor-products.color', ['lang' => app()->getLocale(), 'product' => $product->id]) }}">
+                                                                <i class="fas fa-solid fa-brush">
+                                                                </i>
+
+                                                            </a>
+                                                        </div>
+                                                    @else
+                                                        <div class="col-md-6">
+                                                            <a class="btn btn-info btn-sm btnn" href="#"
+                                                                aria-disabled="true" data-toggle="tooltip"
+                                                                data-placement="top" title="{{ __('Edit') }}">
+                                                                <i class="fas fa-pencil-alt">
+                                                                </i>
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-md-6">
+
+                                                            <a class="btn btn-info btn-sm btnn" href="#"
+                                                                aria-disabled="true" data-toggle="tooltip"
+                                                                data-placement="top" title=" {{ __('Add color') }}">
+                                                                <i class="fas fa-color">
+                                                                </i>
+
+                                                            </a>
+                                                        </div>
+                                                    @endif
+                                                @endif
+
                                                 @if (auth()->user()->HasRole('vendor'))
-                                                <div class="col-md-4">
-                                                    <a class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title=" {{ __('Edit') }}"
-                                                        href="{{ route('vendor-products.edit', ['lang' => app()->getLocale(), 'vendor_product' => $product->id]) }}">
-                                                        <i class="fas fa-pencil-alt">
-                                                        </i>
-                                                       
-                                                    </a>
-                                                </div>
-                                                <div class="col-md-4">
+                                                    <form method="POST"
+                                                        action="{{ route('vendor-products.destroy', ['lang' => app()->getLocale(), 'vendor_product' => $product->id]) }}"
+                                                        enctype="multipart/form-data" style="display:inline-block">
+                                                        @csrf
+                                                        @method('DELETE')
 
-                                                    <a class="btn btn-info btn-sm"data-toggle="{{ __('Add color') }}"
-                                                        href="{{ route('vendor-products.color', ['lang' => app()->getLocale(), 'product' => $product->id]) }}">
-                                                        <i class="fas fa-color">
-                                                        </i>
-                                                        
-                                                    </a>
-                                                </div>
+                                                        @if ($product->trashed())
+                                                            <div class="col-md-6">
+                                                                <button type="submit" class="btn btn-danger btn-sm delete"
+                                                                    data-toggle="tooltip" data-placement="top"
+                                                                    title="{{ __('Delete') }}">
+                                                                    <i class="fas fa-trash">
+                                                                    </i>
+                                                                </button>
+                                                            </div>
+                                                        @else
+                                                            <div class="col-md-6">
+                                                                <button type="submit" class="btn btn-danger btn-sm delete"
+                                                                    data-toggle="tooltip" data-placement="top"
+                                                                    title="{{ __('Trash') }}">
+                                                                    <i class="fas fa-trash">
+                                                                    </i>
+                                                                </button>
+                                                            </div>
+                                                        @endif
+
+                                                    </form>
                                                 @else
-                                                <div class="col-md-4">
-                                                    <a class="btn btn-info btn-sm" href="#" aria-disabled="true"data-toggle="tooltip" data-placement="top" title="{{ __('Edit') }}">
-                                                        <i class="fas fa-pencil-alt">
-                                                        </i>
-                                                        
-                                                    </a>
-                                                </div>
-                                                <div class="col-md-4">
-
-                                                    <a class="btn btn-info btn-sm" href="#" aria-disabled="true"data-toggle="tooltip" data-placement="top" title=" {{ __('Add color') }}">
-                                                        <i class="fas fa-color">
-                                                        </i>
-                                                       
-                                                    </a>
-                                                </div> 
+                                                    @if ($product->trashed())
+                                                        <div class="col-md-6">
+                                                            <button class="btn btn-danger btn-sm btnn" data-toggle="tooltip"
+                                                                data-placement="top" title="  {{ __('Delete') }}">
+                                                                <i class="fas fa-trash">
+                                                                </i>
+                                                            </button>
+                                                        </div>
+                                                    @else
+                                                        <div class="col-md-6">
+                                                            <button class="btn btn-danger btn-sm btnn" data-toggle="tooltip"
+                                                                data-placement="top" title="  {{ __('Trash') }}">
+                                                                <i class="fas fa-trash">
+                                                                </i>
+                                                            </button>
+                                                        </div>
+                                                    @endif
                                                 @endif
                                             @endif
-
-                                            @if (auth()->user()->HasRole('vendor'))
-                                                <form method="POST"
-                                                    action="{{ route('vendor-products.destroy', ['lang' => app()->getLocale(), 'vendor_product' => $product->id]) }}"
-                                                    enctype="multipart/form-data" style="display:inline-block">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                   
-                                                        @if ($product->trashed())
-                                                        <div class="col-md-4">
-                                                        <button type="submit" class="btn btn-danger btn-sm delete"data-toggle="tooltip" data-placement="top" title="{{ __('Delete') }}">
-                                                            <i class="fas fa-trash">
-                                                            </i> 
-                                                        </button>
-                                                        </div>
-                                                        @else
-                                                        <div class="col-md-4">
-                                                        <button type="submit" class="btn btn-danger btn-sm delete"data-toggle="tooltip" data-placement="top" title="{{ __('Trash') }}">
-                                                            <i class="fas fa-trash">
-                                                            </i>
-                                                        </button>
-                                                        </div>
-                                                        @endif
-                                                   
-                                                </form>
-                                            @else
-                                            
-                                                    @if ($product->trashed())
-                                                    <div class="col-md-4">
-                                                    <button class="btn btn-danger btn-sm"data-toggle="tooltip" data-placement="top" title="  {{ __('Delete') }}" >
-                                                        <i class="fas fa-trash">
-                                                        </i>
-                                                    </button>
-                                                    </div>
-                                                    @else
-                                                    <div class="col-md-4">
-                                                    <button class="btn btn-danger btn-sm"data-toggle="tooltip" data-placement="top" title="  {{ __('Trash') }}" >
-                                                        <i class="fas fa-trash">
-                                                        </i> 
-                                                    </button>
-                                                    </div>
-                                                    @endif
-                                                
-                                            @endif
-                                        @endif
-                                    </div>
+                                        </div>
 
                                     </td>
                             </tr>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Astock extends Model
 {
     protected $fillable = [
-        'color_id', 'size_id', 'product_id', 'stock', 'image', 'order_id'
+        'color_id', 'size_id', 'product_id', 'stock', 'image', 'aorder_id'
     ];
 
 

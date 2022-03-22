@@ -931,7 +931,7 @@ class ProductsController extends Controller
             $stock = Astock::create([
                 'product_id' => $product->id,
                 'color_id' => $stock->color_id,
-                'order_id' => $order->id,
+                'aorder_id' => $order->id,
                 'size_id' => $stock->size_id,
                 'image' => $stock->image == NULL ? NULL : $stock->image,
                 'stock' => $request->quantity[$key],
@@ -956,6 +956,9 @@ class ProductsController extends Controller
         $user = User::find($user);
 
         return view('dashboard.orders.mystock_orders')->with('orders', $orders)->with('user', $user);
+        // return view('dashboard.orders.mystock_orders' , compact($orders , $user));
+
+
     }
 
 
