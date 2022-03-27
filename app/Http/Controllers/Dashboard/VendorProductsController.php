@@ -134,12 +134,16 @@ class VendorProductsController extends Controller
             'max_price' => $max_price,
             'total_profit' => $total_profit,
             // 'stock' => $request['stock'],
-            'category_id' => $request['category_id'],
+            'category_id' => 0,
             'country_id' => $category->country->id,
             'status' => 'pending',
             'price' => $price,
 
         ]);
+
+
+        $Product->categories()->attach($request['category_id']);
+
 
         if ($files = $request->file('images')) {
             foreach ($files as $file) {
@@ -445,11 +449,15 @@ class VendorProductsController extends Controller
             'description_en' => $request['description_en'],
             'vendor_price' => $request['vendor_price'],
             // 'stock' => $request['stock'],
-            'category_id' => $request['category_id'],
+            'category_id' => 0,
             'country_id' => $category->country->id,
 
 
         ]);
+
+
+        $Product->categories()->detach();
+        $Product->categories()->attach($request['category_id']);
 
 
 
