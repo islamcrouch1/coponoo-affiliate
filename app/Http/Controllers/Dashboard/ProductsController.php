@@ -1057,8 +1057,7 @@ class ProductsController extends Controller
         ]);
 
         $product = $order->product;
-        $astocks = $product->astocks->where('order_id', $order->id)->values();
-
+        $astocks = $product->astocks->where('aorder_id', $order->id)->values();
 
 
 
@@ -1081,6 +1080,8 @@ class ProductsController extends Controller
                 'status' => 'rejected'
             ]);
         }
+
+
 
 
         switch ($order->status) {
@@ -1152,6 +1153,9 @@ class ProductsController extends Controller
             event(new NewNotification($data));
         } catch (Exception $e) {
         }
+
+
+
 
 
         return redirect()->route('stock.orders', app()->getLocale());
