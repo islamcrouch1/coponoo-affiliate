@@ -39,7 +39,7 @@
 
                                 @php
                                     $cats = [];
-
+                                    
                                 @endphp
 
                                 @if ($product->categories()->first()->parent != 'null')
@@ -69,14 +69,14 @@
                                     @endphp
 
                                     <li class="breadcrumb-item active"> <a
-                                            href="{{ route('products.affiliate.cat', ['lang' => app()->getLocale(), 'category' => $product->categories()->first()->id]) }}">{{ app()->getLocale() == 'ar' ? $product->categories()->first()->name_ar : $product->categories()->first()->name_en }}</a>
+                                            href="{{ route('products.affiliate.cat', ['lang' => app()->getLocale(),'category' => $product->categories()->first()->id]) }}">{{ app()->getLocale() == 'ar'? $product->categories()->first()->name_ar: $product->categories()->first()->name_en }}</a>
                                     </li>
                                     <li class="breadcrumb-item"> <a
                                             href="">{{ app()->getLocale() == 'ar' ? $product->name_ar : $product->name_en }}</a>
                                     </li>
                                 @else
                                     <li class="breadcrumb-item active"> <a
-                                            href="{{ route('products.affiliate.cat', ['lang' => app()->getLocale(), 'category' => $product->categories()->first()->id]) }}">{{ app()->getLocale() == 'ar' ? $product->categories()->first()->name_ar : $product->categories()->first()->name_en }}</a>
+                                            href="{{ route('products.affiliate.cat', ['lang' => app()->getLocale(),'category' => $product->categories()->first()->id]) }}">{{ app()->getLocale() == 'ar'? $product->categories()->first()->name_ar: $product->categories()->first()->name_en }}</a>
                                     </li>
                                     <li class="breadcrumb-item"> <a
                                             href="">{{ app()->getLocale() == 'ar' ? $product->name_ar : $product->name_en }}</a>
@@ -254,9 +254,9 @@
                             </div>
 
                             <div class="bg-primary py-2 px-3 mt-4">
-                                <h6 class="mb-0">
+                                {{-- <h6 class="mb-0">
                                     {{ __('Minimum Price : ') .$product->min_price .' ' .$product->country->currency .' - ' .__('Maximum Price : ') .$product->max_price .' ' .$product->country->currency }}
-                                </h6>
+                                </h6> --}}
                                 <br>
                                 <h4 class="mt-0">
                                     <div class="form-group row">
