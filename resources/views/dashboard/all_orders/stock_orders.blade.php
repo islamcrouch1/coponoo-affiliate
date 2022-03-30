@@ -203,12 +203,14 @@
 
                                             <td class="project-actions">
                                                 <div class="col-md-6">
-                                                
 
-                                                <a style="color:#ffffff" class="btn btn-primary btn-sm "data-toggle="tooltip" data-placement="top" title="{{ __('Show product') }}"
-                                                    href="{{ route('mystock.product', ['lang' => app()->getLocale(),'product' => $order->product->id,'order' => $order->id]) }}">
-                                                    <i class="fas fa-solid fa-tv"></i>
-                                                </a>
+
+                                                    <a style="color:#ffffff" class="btn btn-primary btn-sm "
+                                                        data-toggle="tooltip" data-placement="top"
+                                                        title="{{ __('Show product') }}"
+                                                        href="{{ route('mystock.product', ['lang' => app()->getLocale(),'product' => $order->product->id,'order' => $order->id]) }}">
+                                                        <i class="fas fa-solid fa-tv"></i>
+                                                    </a>
                                                 </div>
 
 

@@ -135,10 +135,10 @@
                                                 </td>
                                                 <td>{{ $product->pivot->price * $product->pivot->stock . ' ' . $order->user->country->currency }}
                                                 </td>
-                                                <td>{{ ($product->pivot->price - $product->min_price) * $product->pivot->stock .' ' .$order->user->country->currency }}
+                                                <td>{{ $product->pivot->commission . ' ' . $order->user->country->currency }}
                                                 </td>
                                                 @if (auth()->user()->HasRole('superadministrator'))
-                                                    <td>{{ $product->pivot->price * $product->pivot->stock -($product->pivot->price - $product->min_price) * $product->pivot->stock -$product->vendor_price * $product->pivot->stock .' ' .$order->user->country->currency }}
+                                                    <td>{{ $product->pivot->profit_for_item * $product->pivot->stock . ' ' . $order->user->country->currency }}
                                                     </td>
                                                 @endif
 
@@ -178,7 +178,7 @@
 
                                 @php
                                     $total_price = 0;
-
+                                    
                                     foreach ($order->products as $product) {
                                         $total_price += $product->pivot->price * $product->pivot->stock;
                                     } //end of foreach
