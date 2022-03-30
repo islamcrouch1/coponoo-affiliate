@@ -144,7 +144,7 @@
                                     <td>{{ $product->pivot->stock }}</td>
                                     <td>{{ $product->min_price . ' ' . $order->user->country->currency }}</td>
                                     @if (!auth()->user()->HasRole('affiliate'))
-                                        <td>{{ $product->pivot->commission . ' ' . $order->user->country->currency }}
+                                        <td>{{ ($product->pivot->price - $product->min_price) * $product->pivot->stock .' ' .$order->user->country->currency }}
                                         </td>
                                     @endif
                                     <td>{{ $product->pivot->price * $product->pivot->stock . ' ' . $order->user->country->currency }}
