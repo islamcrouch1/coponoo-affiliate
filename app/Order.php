@@ -21,7 +21,7 @@ class Order extends Model
 
 
     protected $fillable = [
-        'total_price', 'address', 'status', 'country_id', 'user_name', 'wallet_balance', 'shipping_rate_id', 'total_commission', 'total_profit', 'notes', 'client_phone', 'client_name', 'special_mark', 'house', 'phone2',
+        'total_price', 'address', 'status', 'country_id', 'user_name', 'wallet_balance', 'shipping_rate_id', 'total_commission', 'total_profit', 'notes', 'client_phone', 'client_name', 'special_mark', 'house', 'phone2', 'shipping'
     ];
 
 
@@ -164,7 +164,7 @@ class Order extends Model
 
 
                 $order2 = Order::find($order->order_id);
-                $total = intval($order2->shipping_rate->cost) + $order->total;
+                $total = intval($order2->shipping) + $order->total;
                 $orders[$index]->total = $total;
             }
 

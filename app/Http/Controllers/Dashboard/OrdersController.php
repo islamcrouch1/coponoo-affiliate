@@ -531,6 +531,7 @@ class OrdersController extends Controller
             'user_id' => $user->id,
             'user_name' => $user->name,
             'shipping_rate_id' => $request->shipping,
+            'shipping' => $shipping,
         ]);
 
 

@@ -22,10 +22,11 @@ class CreateOrdersTable extends Migration
             $table->string('special_mark')->nullable();
             $table->string('notes')->nullable();
             $table->integer('country_id');
-            $table->double('total_price' , 8 , 2);
-            $table->double('total_commission' , 8 , 2);
-            $table->double('total_profit' , 8 , 2);
+            $table->double('total_price', 8, 2);
+            $table->double('total_commission', 8, 2);
+            $table->double('total_profit', 8, 2);
             $table->integer('shipping_rate_id');
+            $table->double('shipping', 8, 2)->default(20);
             $table->string('status');
             $table->string('client_name');
             $table->string('client_phone');

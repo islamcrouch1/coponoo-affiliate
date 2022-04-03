@@ -183,11 +183,11 @@
                             </tr>
                             <tr>
                                 <th>{{ __('Shipping:') }}</th>
-                                <td>{{ $order->shipping_rate->cost . ' ' . $order->user->country->currency }}</td>
+                                <td>{{ $order->shipping . ' ' . $order->user->country->currency }}</td>
                             </tr>
                             <tr>
                                 <th>{{ __('Total:') }}</th>
-                                <td>{{ $order->shipping_rate->cost + $total_price . ' ' . $order->user->country->currency }}
+                                <td>{{ $order->shipping + $total_price . ' ' . $order->user->country->currency }}
                                 </td>
                             </tr>
                         </table>
