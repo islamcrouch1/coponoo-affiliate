@@ -1187,7 +1187,7 @@
 
 
 
-                                                    @if ($order->status != 'canceled' && $order->status != 'returned' && $order->status != 'delivered')
+                                                    @if ($order->status != 'canceled' && $order->status != 'returned' && $order->status != 'RTO')
                                                         <button type="button" class="btn btn-primary btn-sm"
                                                             data-toggle="modal"
                                                             data-target="#modal-primary-{{ $order->id }}">
