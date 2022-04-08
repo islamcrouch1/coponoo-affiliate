@@ -68,7 +68,7 @@
                 @endif
             </div>
 
-            <div class="row card-group-row coponoo">
+            <div class="row card-group-row Sonoo">
 
 
 

@@ -194,7 +194,7 @@
         } */
 
         @media only screen and (min-width: 1000px) {
-            .coponoo .col-md-2 {
+            .Sonoo .col-md-2 {
                 max-width: 12.5% !important;
             }
         }
@@ -411,20 +411,21 @@
             width: 30px;
         } */
 
-       
+
         .card-header>.card-tools ::after {
             margin-top: 0px !important;
             padding: 0px !important;
         }
 
         .order-i {
-            width:100%;
+            width: 100%;
 
         }
-        .btnn{
-            width:100%;
+
+        .btnn {
+            width: 100%;
         }
-        
+
     </style>
 
 

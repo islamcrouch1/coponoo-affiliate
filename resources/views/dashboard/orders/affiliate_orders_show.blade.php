@@ -44,10 +44,10 @@
                             <div class="col-sm-4 invoice-col">
                                 {{ __('Merchant Information') }}
                                 <address>
-                                    <strong>coponoo.com</strong><br>
+                                    <strong>Sonoo.com</strong><br>
                                     {{ __('3, 26th of July Street, second floor, Flat 25, in front of Al-Hawari, Lebanon Square, above the pharmacy, Dr. Amira, Al-Muhandseen') }}<br>
                                     {{ __('Phone:') }}<span style="direction: ltr !important">01094666865</span><br>
-                                    {{ __('Email:') }} info@coponoo.com
+                                    {{ __('Email:') }} info@Sonoo.com
                                 </address>
                             </div>
                             <!-- /.col -->
@@ -96,7 +96,7 @@
                                             <th>{{ __('Total Price') }}</th>
                                             <th>{{ __('Commission') }}</th>
                                             @if (auth()->user()->HasRole('superadministrator'))
-                                                <th>{{ __('Coponoo Commission') }}</th>
+                                                <th>{{ __('Sonoo Commission') }}</th>
                                             @endif
 
                                             @if (auth()->user()->HasRole('affiliate'))

@@ -171,7 +171,7 @@ class Product extends Model
 
             foreach ($images as $image) {
 
-                $image_str .= 'https://coponoo.com/storage/images/products/' . $image->url . ',';
+                $image_str .= 'https://Sonoo.com/storage/images/products/' . $image->url . ',';
             }
 
             $image_str =  substr($image_str, 0, -1);

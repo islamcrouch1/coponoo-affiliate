@@ -121,7 +121,7 @@ class Order extends Model
 
 
                 if ($order->product_type == '0') {
-                    $orders[$index]->product_type = 'coponoo stock';
+                    $orders[$index]->product_type = 'Sonoo stock';
                 } else {
                     $orders[$index]->product_type = 'affiliate stock';
                 }
@@ -157,7 +157,7 @@ class Order extends Model
 
 
                 if ($order->product_type == '0') {
-                    $orders[$index]->product_type = 'coponoo stock';
+                    $orders[$index]->product_type = 'Sonoo stock';
                 } else {
                     $orders[$index]->product_type = 'affiliate stock';
                 }

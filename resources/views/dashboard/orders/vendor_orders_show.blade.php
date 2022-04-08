@@ -42,10 +42,10 @@
                             <div class="col-sm-4 invoice-col">
                                 {{ __('Merchant Information') }}
                                 <address>
-                                    <strong>coponoo.com</strong><br>
+                                    <strong>Sonoo.com</strong><br>
                                     {{ __('3, 26th of July Street, second floor, Flat 25, in front of Al-Hawari, Lebanon Square, above the pharmacy, Dr. Amira, Al-Muhandseen') }}<br>
                                     {{ __('Phone:') }}<span style="direction: ltr !important">01094666865</span><br>
-                                    {{ __('Email:') }} info@coponoo.com
+                                    {{ __('Email:') }} info@Sonoo.com
                                 </address>
                             </div>
                             <!-- /.col -->
@@ -111,7 +111,7 @@
 
                                 @php
                                     $total_price = 0;
-
+                                    
                                     foreach ($order->products as $product) {
                                         $total_price += $product->vendor_price * $product->pivot->stock;
                                     } //end of foreach

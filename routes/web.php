@@ -30,7 +30,7 @@ Route::get('/test123', function () {
 
     $client->messages->create(
         '+201121184148', // to
-        ["body" => "Your Coponoo Verification Code Is : {$code}", "from" => "Twilio"]
+        ["body" => "Your Sonoo Verification Code Is : {$code}", "from" => "Twilio"]
     );
 });
 
@@ -47,7 +47,7 @@ Route::group(['prefix' => '{lang}'], function () {
     Route::get('/homepage', 'HomeController@index')->name('home.front');
     Route::get('/contact-us', 'HomeController@contact')->name('contact.front');
     Route::get('/our-products', 'HomeController@products')->name('contact.products');
-    Route::get('/about-coponoo', 'HomeController@about')->name('contact.about');
+    Route::get('/about-Sonoo', 'HomeController@about')->name('contact.about');
     Route::get('/terms-conditions', 'HomeController@terms')->name('front.terms');
 
 
