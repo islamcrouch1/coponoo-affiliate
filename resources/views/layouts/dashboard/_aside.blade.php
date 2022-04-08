@@ -3,7 +3,8 @@
       <!-- Brand Logo -->
       <a href="{{ route('home', app()->getLocale()) }}" class="brand-link"
           style="text-align:center; background-color: #fff; color: #000">
-          <img src="{{ asset('storage/images/logo.png') }}" class="" style="width:160px">
+          <img src="{{ asset('storage/images/logo.png') }}" class="" style="width:160px"><br>
+          <small style="font-size: .5em;">Powered by Sonooegy</small>
       </a>
 
       <!-- Sidebar -->
@@ -13,6 +14,7 @@
               <div class="image">
                   <img src="{{ asset('storage/images/users/' . Auth::user()->profile) }}"
                       class="img-circle elevation-2" alt="User Image">
+
               </div>
               <div class="info">
                   <a href="#" class="d-block">{{ Auth::user()->name }}</a>

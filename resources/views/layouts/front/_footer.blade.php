@@ -26,9 +26,12 @@
     <footer class="footer-area text-center"
         style="background: url({{ asset('storage/img/shape/footer-bg-1.png') }});">
         <div class="container">
-            <div class="footer-thumb">
+            <div class="footer-thumb" style="text-align: center">
                 <a href="index.html"><img style="width: 140px; padding-top:1px"
-                        src="{{ asset('storage/images/logo.png') }}" alt="img"></a>
+                        src="{{ asset('storage/images/logo.png') }}" alt="img"><br>
+                    <small style="font-size: .65em; color:#ffffff">Powered by Sonooegy</small>
+
+                </a>
             </div>
             <div class="widget-footer-link">
                 <ul>
@@ -51,8 +54,11 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="copyright-area">
-                    <p>© 2021 Sonoo. All Rights Reserved - Developed By <a style="color: red"
-                            href="http://red-gulf.com/">RED</a> </p>
+                    <p style="direction: ltr !important"> <span style="font-size: 17px">© 2022 Sonooegy. All Rights
+                            Reserved</span>
+                        <small style="font-size: 10px">Developed By <a style="color: red"
+                                href="http://red-gulf.com/">RED</a></small>
+                    </p>
                 </div>
             </div>
         </div>
