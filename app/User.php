@@ -296,7 +296,7 @@ class User extends Authenticatable
 
             $client->messages->create(
                 $this->phone, // to
-                ["body" => "Your Sonoo Verification Code Is : {$code}", "from" => "Sonoo"]
+                ["body" => "Your Coponoo Verification Code Is : {$code}", "from" => "Coponoo"]
             );
         } catch (TwilioException $e) {
             echo $e->getCode() . ' : ' . $e->getMessage() . "<br>";

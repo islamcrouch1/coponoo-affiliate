@@ -32,7 +32,7 @@ class ProductExport implements FromCollection, WithHeadings
             'vendor_price',
             'selling_price',
             'affiliate_commission',
-            'Sonoo_commission',
+            'Coponoo_commission',
             'total_price',
             'stock',
             'stock_id',

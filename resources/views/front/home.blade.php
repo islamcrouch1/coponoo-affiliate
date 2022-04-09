@@ -17,7 +17,7 @@
                             {{ __('Increase your income from any where. ') }} <br>
                             {{ __('We are specialists in e-commerce and affiliate marketing.') }} <br>
                             {{ __('Your commission with us is guaranteed! And you won\'t need to work twice! ') }} </h1>
-                        <p>{{ __('Sonoo is an affiliate marketing platform with integrated services (we provide you with the right products, warehousing, shipping, and fulfillment)') }}
+                        <p>{{ __('Coponoo is an affiliate marketing platform with integrated services (we provide you with the right products, warehousing, shipping, and fulfillment)') }}
                         </p>
                         {{-- <a href="index.html" class="btn btn-app"><img src="{{ asset('storage/img/btn/goggle-btn-transparent.png') }}" alt="img"></a>
                         <a class="btn btn-app active m-0" href="index.html"><img src="{{ asset('storage/img/btn/app-store-btn-transparent.png') }}" alt="img"></a> --}}
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-xl-4 col-lg-8 col-md-10 col-sm-11">
                     <div class="section-title">
-                        <h2 class="title">{{ __('Why Sonoo?') }}</h2>
+                        <h2 class="title">{{ __('Why Coponoo?') }}</h2>
                         <p>{{ __('The power of your trade mark is our main goal! With no extra commission and no conditions that would prevent the product from running easliy. ') }}
                         </p>
                     </div>
@@ -57,7 +57,7 @@
                                 <div class="featured-wrap-details">
                                     <h4 class="text-al">{{ __('Ask and leave the rest for us! ') }}</h4>
                                     <p class="text-al">
-                                        {{ __('Ask and let Sonoo\'s team do their magic until your order is delivered to your customer.') }}
+                                        {{ __('Ask and let Coponoo\'s team do their magic until your order is delivered to your customer.') }}
                                     </p>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                                 <div class="featured-wrap-details">
                                     <h4 class="text-al">{{ __('We will train you in new ways! ') }}</h4>
                                     <p class="text-al">
-                                        {{ __('Our goal is to make marketing easy for you! Because you are a member of Sonoo...You are one of our team.') }}
+                                        {{ __('Our goal is to make marketing easy for you! Because you are a member of Coponoo...You are one of our team.') }}
                                     </p>
                                 </div>
                             </div>
@@ -141,7 +141,8 @@
                         </div>
                         <ul class="pl-list-inner style-1">
                             <li><i class="fa fa-check"></i>{{ __('Easy to use control panel') }}</li>
-                            <li><i class="fa fa-check"></i>{{ __('Easily monitor your commission and income. ') }}</li>
+                            <li><i class="fa fa-check"></i>{{ __('Easily monitor your commission and income. ') }}
+                            </li>
                             <li><i class="fa fa-check"></i>{{ __('Easy to track your orders. ') }}</li>
                             <li><i class="fa fa-check"></i>{{ __('Monitor the stock and add products.') }}</li>
                             <li><i class="fa fa-check"></i>{{ __('Submit orders in easy and simple steps. ') }}</li>
@@ -304,10 +305,10 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-7 col-md-10">
                         <div style="text-align: center !important" class="section-title mb-0 pb-5 text-center">
-                            <h2 style="text-align: center !important" class="title">{{ __('Sonoo Platform') }}
+                            <h2 style="text-align: center !important" class="title">{{ __('Coponoo Platform') }}
                             </h2>
                             <p style="text-align: center !important">
-                                {{ __('Sonoo..Everything your work needs, All the facilities to convince your customers.') }}
+                                {{ __('Coponoo..Everything your work needs, All the facilities to convince your customers.') }}
                             </p>
                         </div>
                     </div>

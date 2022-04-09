@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sonoo.com | Invoice Print</title>
+    <title>Coponoo.com | Invoice Print</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -62,10 +62,10 @@
                 <div class="col-sm-4 invoice-col">
                     {{ __('Merchant Information') }}
                     <address>
-                        <strong>Sonoo.com</strong><br>
+                        <strong>Coponoo.com</strong><br>
                         {{ __('3, 26th of July Street, second floor, Flat 25, in front of Al-Hawari, Lebanon Square, above the pharmacy, Dr. Amira, Al-Muhandseen') }}<br>
                         {{ __('Phone:') }}<span style="direction: ltr !important">01094666865</span><br>
-                        {{ __('Email:') }} info@Sonoo.com
+                        {{ __('Email:') }} info@Coponoo.com
                     </address>
                 </div>
                 <!-- /.col -->

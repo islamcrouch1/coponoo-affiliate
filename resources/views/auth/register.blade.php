@@ -98,9 +98,11 @@
                                         id="inlineFormCustomSelectPref" id="role" type="role" name="role" required>
 
 
-                                        <option value="4" {{ old('role') == '4' ? 'selected' : '' }}>{{ __('affiliate') }}
+                                        <option value="4" {{ old('role') == '4' ? 'selected' : '' }}>
+                                            {{ __('affiliate') }}
                                         </option>
-                                        <option value="3" {{ old('role') == '3' ? 'selected' : '' }}>{{ __('Vendor') }}
+                                        <option value="3" {{ old('role') == '3' ? 'selected' : '' }}>
+                                            {{ __('Vendor') }}
                                         </option>
                                     </select>
                                     @error('role')
@@ -256,7 +258,7 @@
                                     id="flexCheckDefault" required>
                                 <label class="form-check-label" for="flexCheckDefault">
                                     <a href="{{ route('front.terms', app()->getLocale()) }}" target="_blank">
-                                        {{ __('By registering an account with us, you agree to the Terms of Use and Terms and Conditions of the Sonoo platform') }}
+                                        {{ __('By registering an account with us, you agree to the Terms of Use and Terms and Conditions of the Coponoo platform') }}
                                     </a>
                                 </label>
                                 @error('check')

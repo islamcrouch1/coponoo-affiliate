@@ -31,7 +31,7 @@
                         <div class="title">
                             {{ __('Email') }}
                         </div>
-                        <span>Info@Sonoo.com</span>
+                        <span>Info@Coponoo.com</span>
                         <div class="title">
                             {{ __('Address') }}
                         </div>

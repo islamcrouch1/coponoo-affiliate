@@ -24,7 +24,7 @@ $(document).ready(function() {
         `"
             >
             <div class="media">
-              <img src="http://Sonoo.com/storage/images/icon.png" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="http://Coponoo.com/storage/images/icon.png" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                     ` +

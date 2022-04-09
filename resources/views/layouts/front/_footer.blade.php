@@ -42,9 +42,9 @@
             </div>
             <div class="widget-footer-social">
                 <ul>
-                    <li><a href="https://www.facebook.com/Sonoo/"><i class="fab fa-facebook"></i></a></li>
-                    <li><a href="https://twitter.com/SonooEG"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="https://www.instagram.com/Sonooeg/"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.facebook.com/Coponoo/"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/CoponooEG"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.instagram.com/Coponooeg/"><i class="fab fa-instagram"></i></a></li>
                     <li><a href="https://www.youtube.com/channel/UCUI_iyN0ZcnXN9s96CAFV-w"><i
                                 class="fab fa-youtube"></i></a></li>
                 </ul>

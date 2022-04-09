@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sonoo - Dashboard</title>
+    <title>Coponoo - Dashboard</title>
 
     <link rel="icon" href="{{ asset('storage/img/fevicon.png') }}">
 
@@ -194,7 +194,7 @@
         } */
 
         @media only screen and (min-width: 1000px) {
-            .Sonoo .col-md-2 {
+            .Coponoo .col-md-2 {
                 max-width: 12.5% !important;
             }
         }
